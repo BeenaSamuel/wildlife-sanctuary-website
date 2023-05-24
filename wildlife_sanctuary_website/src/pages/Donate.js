@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-class Donate extends React.Component {
+import React, { Component } from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
+
+class Donate extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,6 +11,7 @@ class Donate extends React.Component {
       donationAmount: '',
     };
   }
+
   handleDonationIdChange = (event) => {
     this.setState({ donationId: event.target.value });
   };
@@ -42,52 +40,36 @@ class Donate extends React.Component {
 
   render() {
     return (
-      <section>
-      <center><div className="App">
-        <br></br>
-        <h1>Donate</h1>
-        <form onSubmit={this.handleSubmit}>
-          <br></br>
-          <br></br>
-          <br />
-          <Form.Group className="mb-3" controlId="formGroupEmail">
-        <Form.Label>Donor Name</Form.Label>
-        <Form.Control  type="text"
-              value={this.state.donorName}
-              onChange={this.handleDonorNameChange} />
-      </Form.Group>
-          <br></br>
-          <br></br>
-          <br /><label>Donation Type</label>
-          <Form.Select aria-label="Default select example">
-      <option>Donation Type</option>
-      <option value="Organization">Organization</option>
-      <option value="Individual">Individual</option>
-      
-    </Form.Select>
-          <br></br>
-          <br></br>
-          <br />
-          <Form.Group className="mb-3" controlId="formGroupEmail">
-        <Form.Label> Donation Amount (INR):</Form.Label>
-        <Form.Control  type="text"
-              value={this.state.donationAmount}
-              onChange={this.handleDonationAmountChange} />
-      </Form.Group>
-          <br></br>
-          <br></br>
-          <br />
-          <center><Button variant="secondary" type="submit">Donate</Button></center>
-         
-        </form>
-      </div>
-     </center>
-     </section>
+      <Container className="d-flex justify-content-center align-items-start" style={{ minHeight: '100vh' }}>
+        <div className="donate-form">
+          <h1>Donate</h1>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group controlId="donorName">
+              <Form.Label>Donor Name:</Form.Label>
+              <Form.Control type="text" value={this.state.donorName} onChange={this.handleDonorNameChange} />
+            </Form.Group>
+
+            <Form.Group controlId="donationSource">
+              <Form.Label>Donation Type:</Form.Label>
+              <Form.Control as="select" value={this.state.donationSource} onChange={this.handleDonationSourceChange}>
+                <option value="organization">Organization</option>
+                <option value="individual">Individual</option>
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="donationAmount">
+              <Form.Label>Donation Amount (INR):</Form.Label>
+              <Form.Control type="text" value={this.state.donationAmount} onChange={this.handleDonationAmountChange} />
+            </Form.Group>
+
+            <Button variant="secondary" type="submit">
+              Donate
+            </Button>
+          </Form>
+        </div>
+      </Container>
     );
   }
 }
-
-
-
 
 export default Donate;
