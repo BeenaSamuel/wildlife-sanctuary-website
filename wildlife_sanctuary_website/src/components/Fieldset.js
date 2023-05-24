@@ -7,8 +7,8 @@ export default function FieldSet(props) {
     const { imageSrc, paragraph } = props;
 
     const legendTemplate = (
-        <div className="flex align-items-center text-primary">
-            <img src={imageSrc} alt="User Avatar" className="mr-5" />
+        <div className="flex align-items-center text-success">
+            
             <span className="font-bold text-lg">User Details</span>
         </div>
     );
