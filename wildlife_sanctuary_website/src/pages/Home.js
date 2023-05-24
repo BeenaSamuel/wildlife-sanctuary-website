@@ -15,7 +15,7 @@ class Home extends React.Component {
         <Carousel>
                      <div className='head-text'>
                       <div className='head-text'>
-                      <img src="./Picture1.png">
+                      <img src="./Picture1.png"/> 
                           <p className="legend"></p>
                       </div>
                       

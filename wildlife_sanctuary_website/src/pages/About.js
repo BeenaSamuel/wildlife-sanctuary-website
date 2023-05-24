@@ -1,9 +1,14 @@
 import React from 'react';
+import FieldSet from '../components/Fieldset';
 //import './about.css';
 
 function About() {
   return (
-    <div className="container">
+    <div >
+      <FieldSet
+    imageSrc="https://source.unsplash.com/featured/?elephant"
+    paragraph="Elephants are a keystone species, meaning they play a critical role in maintaining the structure and function of their ecosystem. By protecting them, we help ensure the health of the entire ecosystem."
+/>
         <br></br><br></br>
       <h1>Protecting Our Planet's Wildlife</h1>
       <p>Our planet is home to a vast array of wildlife, from majestic elephants and lions to tiny hummingbirds and butterflies. Unfortunately, many of these species are under threat due to human activity, including habitat destruction, climate change, and hunting. It is up to all of us to protect these animals and their habitats to ensure they continue to thrive for generations to come.</p>
