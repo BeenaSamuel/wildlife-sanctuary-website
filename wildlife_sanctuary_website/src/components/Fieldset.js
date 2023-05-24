@@ -4,12 +4,11 @@ import { Fieldset } from 'primereact/fieldset';
 import { Image } from 'primereact/image';
 
 export default function FieldSet(props) {
-    const { imageSrc, paragraph } = props;
+    const { imageSrc, paragraph ,heading} = props;
 
     const legendTemplate = (
         <div className="flex align-items-center text-success">
-            
-            <span className="font-bold text-lg">User Details</span>
+            <span className="font-bold text-lg">{heading}</span>
         </div>
     );
 
