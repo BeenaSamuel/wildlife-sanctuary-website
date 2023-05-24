@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 class Donate extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +14,6 @@ class Donate extends React.Component {
       donationAmount: '',
     };
   }
-
   handleDonationIdChange = (event) => {
     this.setState({ donationId: event.target.value });
   };
@@ -39,60 +42,47 @@ class Donate extends React.Component {
 
   render() {
     return (
+      <section>
       <center><div className="App">
         <br></br>
         <h1>Donate</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Donation ID:
-            <input
-              type="text"
-              value={this.state.donationId}
-              onChange={this.handleDonationIdChange}
-            />
-          </label>
           <br></br>
           <br></br>
           <br />
-          <label>
-            Donor Name:
-            <input
-              type="text"
+          <Form.Group className="mb-3" controlId="formGroupEmail">
+        <Form.Label>Donor Name</Form.Label>
+        <Form.Control  type="text"
               value={this.state.donorName}
-              onChange={this.handleDonorNameChange}
-            />
-          </label>
+              onChange={this.handleDonorNameChange} />
+      </Form.Group>
+          <br></br>
+          <br></br>
+          <br /><label>Donation Type</label>
+          <Form.Select aria-label="Default select example">
+      <option>Donation Type</option>
+      <option value="Organization">Organization</option>
+      <option value="Individual">Individual</option>
+      
+    </Form.Select>
           <br></br>
           <br></br>
           <br />
-          <label>
-            Donation Source:
-            <select
-              value={this.state.donationSource}
-              onChange={this.handleDonationSourceChange}
-            >
-              <option value="organization">Organization</option>
-              <option value="individual">Individual</option>
-            </select>
-          </label>
-          <br></br>
-          <br></br>
-          <br />
-          <label>
-            Donation Amount (INR):
-            <input
-              type="text"
+          <Form.Group className="mb-3" controlId="formGroupEmail">
+        <Form.Label> Donation Amount (INR):</Form.Label>
+        <Form.Control  type="text"
               value={this.state.donationAmount}
-              onChange={this.handleDonationAmountChange}
-            />
-          </label>
+              onChange={this.handleDonationAmountChange} />
+      </Form.Group>
           <br></br>
           <br></br>
           <br />
-          <center><button type="submit">Donate</button></center>
+          <center><Button variant="secondary" type="submit">Donate</Button></center>
+         
         </form>
       </div>
      </center>
+     </section>
     );
   }
 }
