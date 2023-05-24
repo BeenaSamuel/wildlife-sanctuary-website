@@ -1,5 +1,6 @@
 import React from 'react';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 class Home extends React.Component {
     constructor(props) {
       super(props);
