@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-
+import Tourism from "./Tourism";
+import { Route, Routes } from "react-router-dom"
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +35,17 @@ class Login extends Component {
           this.props.onSignIn();
         } else {
           console.log('User does not exist!');
+        
           this.setState({ error: 'Invalid username or password' });
         }
       })
       .catch((error) => {
+        <Routes>
+    
+      
+        <Route path="/Tourism" component={Tourism} />
+    
+    </Routes>
         console.error('Error fetching user data:', error);
         this.setState({ error: 'Error signing in. Please try again later.' });
       });

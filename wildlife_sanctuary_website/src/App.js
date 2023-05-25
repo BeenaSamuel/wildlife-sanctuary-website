@@ -48,17 +48,12 @@ function App() {
           <Route path="/Feedback" element={<Feedback />} />
           <Route path="/About" element={<About />} />
           <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/Donate" element={<Donate/>} />
+          <Route path="/Donate" element={<div style={{ display: 'flex', justifyContent: 'center' }}><Donate /></div>} />
           <Route path="/Instructions" element={<Instructions />} />
           <Route path="/Whywe" element={<Whywe />} />
           <Route path="/Tourism" element={<Tourism />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/Login" element={<Login />} />
-          
-          
-
-          
-          
+          <Route path="/Login" element={<div style={{ display: 'flex', justifyContent: 'center' }}><Login /></div>} />
           
         </Routes>
        
