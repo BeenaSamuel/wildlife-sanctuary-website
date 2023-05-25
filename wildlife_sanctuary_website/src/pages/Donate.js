@@ -45,12 +45,12 @@ class Donate extends Component {
           <h1>Donate</h1>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="donorName">
-              <Form.Label>Donor Name:</Form.Label>
+              <Form.Label><h4>Donor Name:</h4></Form.Label>
               <Form.Control type="text" value={this.state.donorName} onChange={this.handleDonorNameChange} />
             </Form.Group>
 
             <Form.Group controlId="donationSource">
-              <Form.Label>Donation Type:</Form.Label>
+              <Form.Label><h4>Donation Type:</h4></Form.Label>
               <Form.Control as="select" value={this.state.donationSource} onChange={this.handleDonationSourceChange}>
                 <option value="organization">Organization</option>
                 <option value="individual">Individual</option>
@@ -58,11 +58,12 @@ class Donate extends Component {
             </Form.Group>
 
             <Form.Group controlId="donationAmount">
-              <Form.Label>Donation Amount (INR):</Form.Label>
+              <Form.Label><h4>Donation Amount (INR):</h4></Form.Label>
               <Form.Control type="text" value={this.state.donationAmount} onChange={this.handleDonationAmountChange} />
+              <br/>
             </Form.Group>
 
-            <Button variant="secondary" type="submit">
+            <Button variant="primary" type="submit">
               Donate
             </Button>
           </Form>

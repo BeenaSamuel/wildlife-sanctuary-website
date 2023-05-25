@@ -1,4 +1,6 @@
 import React from 'react';
+import panda from '../images/panda.jpg';
+import hippo from '../images/hippo.jpeg';
 
 const Gallery = () => {
   const animals = [
@@ -14,7 +16,8 @@ const Gallery = () => {
     },
     {
       name: 'Panda',
-      imageSrc: 'https://images.pexels.com/photos/65320/polar-bear-bear-teddy-sleep-65320.jpeg?auto=compress&cs=tinysrgb&w=400',
+      // imageSrc: 'https://images.pexels.com/photos/65320/polar-bear-bear-teddy-sleep-65320.jpeg?auto=compress&cs=tinysrgb&w=400',
+      imageSrc: panda,
       description: 'Pandas are black and white bears native to central China and are known for their adorable appearance.'
     },
     {
@@ -44,7 +47,8 @@ const Gallery = () => {
     },
     {
       name: 'Hippo',
-      imageSrc: 'https://images.pexels.com/photos/631292/pexels-photo-631292.jpeg?auto=compress&cs=tinysrgb&w=400',
+      // imageSrc: 'https://images.pexels.com/photos/631292/pexels-photo-631292.jpeg?auto=compress&cs=tinysrgb&w=400',
+      imageSrc: hippo,
       description: 'Hippos are large aquatic mammals and are known for their massive jaws and aggressive behavior.'
     },
     {
@@ -73,7 +77,7 @@ const Gallery = () => {
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
       {animals.map((animal, index) => (
         <div key={index} style={{ width: '30%', marginBottom: '30px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
-         <br></br> <br></br><h2 style={{ textAlign: 'center', padding: '10px 0' }}>{animal.name}</h2>
+          <br></br> <br></br><h2 style={{ textAlign: 'center', padding: '10px 0' }}>{animal.name}</h2>
           <img src={animal.imageSrc} alt={animal.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
           <p style={{ margin: '10px', lineHeight: '1.5' }}>{animal.description}</p>
         </div>
