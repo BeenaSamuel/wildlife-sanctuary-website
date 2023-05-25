@@ -9,6 +9,7 @@ import Instructions from "./pages/Instructions";
 import Feedback from "./pages/Feedback";
 import Tourism from "./pages/Tourism";
 import Gallery from "./pages/Gallery";
+import ViewDonors from "./pages/View Donors";
 import { Route, Routes } from "react-router-dom"
 import React, { useState } from 'react';
 
@@ -33,9 +34,6 @@ function App() {
     setIsSignedIn(true);
   };
 
-  const handleSignOut = () => {
-    setIsSignedIn(false);
-  };
  
   return (
     <>
@@ -53,15 +51,20 @@ function App() {
           <Route path="/Whywe" element={<Whywe />} />
           <Route path="/Tourism" element={<Tourism />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/Login" element={<div style={{ display: 'flex', justifyContent: 'center' }}><Login /></div>} />
+          <Route path="/View Donors" element={<ViewDonors />} />
+          <Route path="/Login" element={<Login onSignIn={handleSignIn} />} />
           
         </Routes>
-       
+        
+        
+        {isSignedIn ? (
+          <button onClick={() => setIsSignedIn(false)}>Sign Out</button>
+        ) : (
+          null
+        )}
       
       </div>
-       {isSignedIn && (
-        <button onClick={handleSignOut}>Sign Out</button>
-      )}
+      
 
       
     </>

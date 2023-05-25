@@ -2,6 +2,7 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 
 
+
 export default function Navbar({ isSignedIn }) {
   return (
     <nav className="nav">
@@ -14,14 +15,15 @@ export default function Navbar({ isSignedIn }) {
       
       <ul>
         
-        {!isSignedIn && <CustomLink to="/">Home</CustomLink>}
+       <CustomLink to="/">Home</CustomLink>
         {isSignedIn && <CustomLink to="Tourism">Tourism</CustomLink>}
         {!isSignedIn && <CustomLink to="/Register">Register</CustomLink>}
-        {!isSignedIn && <CustomLink to="/Whywe">Why we?</CustomLink>}
-        {!isSignedIn && <CustomLink to="/Instructions">Instructions</CustomLink>}
-        {!isSignedIn && <CustomLink to="/Gallery">Gallery</CustomLink>}
-        {!isSignedIn && <CustomLink to="/About">About us</CustomLink>}
-        {!isSignedIn && <CustomLink to="/Donate">Donate</CustomLink>}
+         <CustomLink to="/View Donors">View Donors</CustomLink>
+        <CustomLink to="/Whywe">Why we?</CustomLink>
+        <CustomLink to="/Instructions">Instructions</CustomLink>
+         <CustomLink to="/Gallery">Gallery</CustomLink>
+         <CustomLink to="/About">About us</CustomLink>
+        <CustomLink to="/Donate">Donate</CustomLink>
         {!isSignedIn && <CustomLink to="/Login">Sign in</CustomLink>}
         
       </ul>

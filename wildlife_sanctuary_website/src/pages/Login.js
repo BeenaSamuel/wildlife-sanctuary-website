@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import '../Login.css'; 
 import axios from 'axios';
-import Tourism from "./Tourism";
-import { Route, Routes } from "react-router-dom"
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -26,26 +26,18 @@ class Login extends Component {
     event.preventDefault();
     const { username, password } = this.state;
     axios
-      .get(`http://localhost:8084/api/tourists?name=${username}&password=${password}`)
+      .get(`http://localhost:8081/api/tourists?name=${username}&password=${password}`)
       .then((response) => {
         const data = response.data;
         if (data.length) {
           console.log('User exists!');
-          
-          this.props.onSignIn();
+          this.props.onSignIn(); // Call the onSignIn prop function
         } else {
           console.log('User does not exist!');
-        
           this.setState({ error: 'Invalid username or password' });
         }
       })
       .catch((error) => {
-        <Routes>
-    
-      
-        <Route path="/Tourism" component={Tourism} />
-    
-    </Routes>
         console.error('Error fetching user data:', error);
         this.setState({ error: 'Error signing in. Please try again later.' });
       });
@@ -72,12 +64,14 @@ class Login extends Component {
     // Otherwise, render the sign-in form
     return (
       <div className="App">
-        <h1>Sign In</h1>
-       <div className='Login'>
+        
+       <div className='Login mx-auto'>
         <Form onSubmit={this.handleSubmit}>
+        <h1>Sign In</h1>
           <Form.Group className="mb-3" controlId="formBasicUsername">
-            <Form.Label>Username</Form.Label>
+            
             <Form.Control
+              className="w-50 mx-auto"
               type="text"
               placeholder="Enter username"
               value={this.state.username}
@@ -86,8 +80,9 @@ class Login extends Component {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+           
             <Form.Control
+              className="w-50 mx-auto"
               type="password"
               placeholder="Enter password"
               value={this.state.password}
