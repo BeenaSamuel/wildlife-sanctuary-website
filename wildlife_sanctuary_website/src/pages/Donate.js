@@ -1,41 +1,44 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import axios from "axios";
+
 
 class Donate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      donationId: '',
-      donorName: '',
-      donationSource: 'organization',
-      donationAmount: '',
+      
+      donorname: '',
+      donationtype: 'organization',
+      donationamount: '',
     };
   }
 
-  handleDonationIdChange = (event) => {
-    this.setState({ donationId: event.target.value });
-  };
+  
 
   handleDonorNameChange = (event) => {
-    this.setState({ donorName: event.target.value });
+    this.setState({ donorname: event.target.value });
   };
 
   handleDonationSourceChange = (event) => {
-    this.setState({ donationSource: event.target.value });
+    this.setState({ donationtype: event.target.value });
   };
 
   handleDonationAmountChange = (event) => {
-    this.setState({ donationAmount: event.target.value });
+    this.setState({ donationamount: event.target.value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Donation Details:');
-    console.log('Donation ID:', this.state.donationId);
-    console.log('Donor Name:', this.state.donorName);
-    console.log('Donation Source:', this.state.donationSource);
-    console.log('Donation Amount:', this.state.donationAmount);
-    // Perform any necessary actions with the donation details
+   const {donationamount,donationtype,donorname} = this.state;
+   
+    
+   axios.post("http://localhost:8085/api/donations",{donationamount,donationtype,donorname} ).then(
+    alert("Thanks for donation")
+   ).catch(
+    (ex)=>console.log(ex)
+   )
+   
   };
 
   render() {
@@ -46,12 +49,13 @@ class Donate extends Component {
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="donorName">
               <Form.Label><h4>Donor Name:</h4></Form.Label>
-              <Form.Control type="text" value={this.state.donorName} onChange={this.handleDonorNameChange} />
+              <Form.Control type="text"  onChange={this.handleDonorNameChange} />
             </Form.Group>
 
             <Form.Group controlId="donationSource">
               <Form.Label><h4>Donation Type:</h4></Form.Label>
-              <Form.Control as="select" value={this.state.donationSource} onChange={this.handleDonationSourceChange}>
+              <Form.Control as="select"  onChange={this.handleDonationSourceChange}>
+                  <option>Select </option>
                 <option value="organization">Organization</option>
                 <option value="individual">Individual</option>
               </Form.Control>
@@ -59,7 +63,7 @@ class Donate extends Component {
 
             <Form.Group controlId="donationAmount">
               <Form.Label><h4>Donation Amount (INR):</h4></Form.Label>
-              <Form.Control type="text" value={this.state.donationAmount} onChange={this.handleDonationAmountChange} />
+              <Form.Control type="number"  onChange={this.handleDonationAmountChange} />
               <br/>
             </Form.Group>
 
