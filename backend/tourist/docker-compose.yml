@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+
+  tourist:
+    image: wildicare/tourist:latest
+    mem_limit: 700m
+    ports:
+      - "8081:8081"
+    networks:
+      - ptu-network
+    environment:
+      - jwt.secret-key=almightyjava
+  
+  donation:
+    image: wildicare/donation:latest
+    mem_limit: 700m
+    ports:
+      - "8085:8085"
+    networks:
+      - ptu-network
+    environment:
+      - jwt.secret-key=almightyjava
+
+  ticket:
+    image: wildicare/ticket:latest
+    mem_limit: 700m
+    ports:
+      - "8082:8082"
+    networks:
+      - ptu-network
+    environment:
+      - jwt.secret-key=almightyjava
+          
+networks:
+  ptu-network:
