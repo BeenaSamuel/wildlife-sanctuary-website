@@ -12,10 +12,16 @@ class Home extends React.Component {
       return (
        <section className='home'>
         <div>
-        <Carousel>
+        <div className="carousel-wrapper">
+        <Carousel className="carousel">
+          <center>
                      <div className='head-text'>
                       <div className='head-text'>
+
                       <img src="./Picture1.png"/> 
+
+                      <img src="./Picture1.png"></img>
+
                           <p className="legend"></p>
                       </div>
                       
@@ -74,9 +80,9 @@ class Home extends React.Component {
                         
                       </div>
                       </div>
-                      
+                      </center>
                   </Carousel>
-                    
+           </div>         
         </div> 
         </section>
       );
