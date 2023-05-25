@@ -7,6 +7,9 @@ import net.wildlife.donation.entity.Donation;
 import net.wildlife.donation.repository.DonationRepository;
 import net.wildlife.donation.service.DonationService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -39,4 +42,12 @@ public class DonationServiceImpl implements DonationService {
     public Donation getDonationById(Long donationId) {
         return donationRepository.findById(donationId).get();
     }
+    
+    @Override
+	public List<Donation> getAllDonations() {
+		
+		List<Donation> donations = donationRepository.findAll();
+		
+		return donations;
+	}
 }

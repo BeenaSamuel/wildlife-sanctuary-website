@@ -4,8 +4,11 @@ package net.wildlife.tourist.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import net.wildlife.tourist.entity.Tourist;
+import net.wildlife.tourist.entity.Tourist;
 import net.wildlife.tourist.repository.TouristRepository;
 import net.wildlife.tourist.service.TouristService;
+
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -39,4 +42,12 @@ public class TouristServiceImpl implements TouristService {
     public Tourist getTouristById(Long touristId) {
         return touristRepository.findById(touristId).get();
     }
+    
+    @Override
+	public List<Tourist> getAllTourists() {
+		
+		List<Tourist> tourists = touristRepository.findAll();
+		
+		return tourists;
+	}
 }

@@ -46,7 +46,7 @@ public class Donation {
 		this.donationamount = donationamount;
 	}
 	public Donation(Long id, String donorname, String donationtype, Long donationamount) {
-		super();
+		
 		this.id = id;
 		this.donorname = donorname;
 		this.donationtype = donationtype;

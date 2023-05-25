@@ -16,6 +16,7 @@ public class Tourist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String password;
     private String accessplace;
     private Long amount;
     private Long contact;
@@ -53,13 +54,22 @@ public class Tourist {
 	public String getPrefferedlang() {
 		return prefferedlang;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public void setPrefferedlang(String prefferedlang) {
 		this.prefferedlang = prefferedlang;
 	}
-	public Tourist(Long id, String name, String accessplace, Long amount, Long contact, String prefferedlang) {
+	
+	public Tourist(Long id, String name, String password, String accessplace, Long amount, Long contact,
+			String prefferedlang) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.password = password;
 		this.accessplace = accessplace;
 		this.amount = amount;
 		this.contact = contact;
