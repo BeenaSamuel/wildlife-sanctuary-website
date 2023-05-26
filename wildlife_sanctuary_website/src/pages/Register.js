@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import ChipsDemo from '../components/Multiselect';
 import './Register.css'; // Import the CSS file for styling
+import axios from "axios";
 
 class Register extends Component {
   constructor(props) {
@@ -11,8 +12,9 @@ class Register extends Component {
       place: '',
       password: '',
       confirmpassword: '',
+      amount : '',
       contact: '',
-      languages: '',
+      prefferedlang: '',
       passwordState: 'normal', // Added passwordState to track password match status
     };
   }
@@ -20,20 +22,38 @@ class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, contact, languages, place, password, confirmpassword } = this.state;
+    const { name, contact, prefferedlang, amount, password, confirmpassword } = this.state;
 
-    if (name !=='' && contact !=='' && languages !== '' ) {
-      if (password !== confirmpassword) {
+    if (name !='' && contact !=''  && amount != '') {
+      if (password != confirmpassword) {
         alert("Confirm password doesn't match");
-      } else {
-        alert('Success');
-        //axios
+      } 
+      else {
+         if (amount != '5000')
+          {
+            alert("Rs.5000 must be paid")
+          }
+          else{
+        axios.post("http://localhost:8081/api/tourist",{name,password,amount,contact,prefferedlang} ).then(
+          alert("Registration success")
+         ).catch(
+          (ex)=>console.log(ex)
+         )
+         }
       }
-    } else {
+    } 
+    
+    else {
       alert('Please fill in all details');
     }
+
+   
+   
+    
+  
   };
 
+  
   handleNameChange = (e) => {
     this.setState({ name: e.target.value });
   };
@@ -63,8 +83,12 @@ class Register extends Component {
     this.setState({ confirmpassword, passwordState });
   };
 
+  handleAmountChange = (e) => {
+    this.setState({ amount: e.target.value });
+  };
+
   render() {
-    const { name, place, password, confirmpassword, contact, languages, passwordState } = this.state;
+    const { name, amount, password, confirmpassword, contact, languages, passwordState } = this.state;
 
     return (
       <Container className="justify-content-center align-items-start w-50 mx-auto">
@@ -112,6 +136,14 @@ class Register extends Component {
               <Form.Label>Contact:</Form.Label>
               
               <Form.Control type="number" value={contact} onChange={this.handleContactChange} />
+            </Form.Group>
+            <br></br>
+            <br></br>
+
+            <Form.Group controlId="amount">
+              <Form.Label>Amount:</Form.Label>
+              
+              <Form.Control type="number" value={amount} onChange={this.handleAmountChange} />
             </Form.Group>
             <br></br>
             <br></br>
