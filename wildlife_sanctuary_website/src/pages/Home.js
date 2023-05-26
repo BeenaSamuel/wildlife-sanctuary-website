@@ -77,6 +77,8 @@ class Home extends React.Component {
             </div>
             <div className="footer-copyright">
               <p>© 2023 Your Company. All rights reserved.</p>
+              <br></br>
+              <br></br>
             </div>
           </div>
         </footer>

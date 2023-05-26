@@ -22,7 +22,6 @@ export default function Navbar({ isSignedIn }) {
         <CustomLink to="/Whywe">Why we?</CustomLink>
         <CustomLink to="/Instructions">Instructions</CustomLink>
          <CustomLink to="/Gallery">Gallery</CustomLink>
-         <CustomLink to="/About">About us</CustomLink>
         <CustomLink to="/Donate">Donate</CustomLink>
         {!isSignedIn && <CustomLink to="/Login">Sign in</CustomLink>}
         

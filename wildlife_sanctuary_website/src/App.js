@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home"
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import About from "./pages/About";
 import Whywe from "./pages/Whywe";
 import Donate from "./pages/Donate";
 import Instructions from "./pages/Instructions";
@@ -44,7 +43,6 @@ function App() {
         
           <Route path="/" element={<Home />} />
           <Route path="/Feedback" element={<Feedback />} />
-          <Route path="/About" element={<About />} />
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Donate" element={<div style={{ display: 'flex', justifyContent: 'center' }}><Donate /></div>} />
           <Route path="/Instructions" element={<Instructions />} />
