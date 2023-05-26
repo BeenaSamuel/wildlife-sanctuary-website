@@ -17,7 +17,7 @@ public class Tourist {
     private Long id;
     private String name;
     private String password;
-    private String accessplace;
+   
     private Long amount;
     private Long contact;
     private String prefferedlang;
@@ -33,12 +33,7 @@ public class Tourist {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAccessplace() {
-		return accessplace;
-	}
-	public void setAccessplace(String accessplace) {
-		this.accessplace = accessplace;
-	}
+	
 	public Long getAmount() {
 		return amount;
 	}
@@ -70,7 +65,7 @@ public class Tourist {
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		this.accessplace = accessplace;
+		
 		this.amount = amount;
 		this.contact = contact;
 		this.prefferedlang = prefferedlang;

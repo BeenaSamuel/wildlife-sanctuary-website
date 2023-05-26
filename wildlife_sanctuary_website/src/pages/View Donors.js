@@ -26,7 +26,7 @@ function ViewDonors() {
         <thead>
           <tr>
             
-           <th>Id</th>
+           {/* <th>Id</th> */}
             <th>Name</th>
             <th>Type</th> 
             <th>Amount</th>
@@ -39,7 +39,7 @@ function ViewDonors() {
               
 
               
-              <td>{details.id}</td>
+              {/* <td>{details.id}</td> */}
               <td>{details.donorname}</td>
               <td>{details.donationtype}</td>
               <td>{details.donationamount}</td>
