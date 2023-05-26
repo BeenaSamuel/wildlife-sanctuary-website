@@ -1,36 +1,21 @@
-version: "3.9"
-
+version: '3'
 services:
-
   tourist:
-    image: wildicare/tourist:latest
-    mem_limit: 700m
+    image: tourist
     ports:
       - "8081:8081"
     networks:
-      - ptu-network
-    environment:
-      - jwt.secret-key=almightyjava
-  
-  donation:
-    image: wildicare/donation:latest
-    mem_limit: 700m
-    ports:
-      - "8085:8085"
+      - wildicare-net
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
     networks:
-      - ptu-network
+      - wildicare-net
     environment:
-      - jwt.secret-key=almightyjava
+      - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
+      - MYSQL_DATABASE= wildlifedatabase  
 
-  ticket:
-    image: wildicare/ticket:latest
-    mem_limit: 700m
-    ports:
-      - "8082:8082"
-    networks:
-      - ptu-network
-    environment:
-      - jwt.secret-key=almightyjava
-          
 networks:
-  ptu-network:
+  wildicare-net: 
