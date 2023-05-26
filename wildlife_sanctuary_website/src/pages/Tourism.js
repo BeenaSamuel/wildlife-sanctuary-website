@@ -26,7 +26,8 @@ const TicketForm = () => {
   };
 
   return (
-    <Form onSubmit={handleFormSubmit}>
+    <Form onSubmit={handleFormSubmit} className='w-50 mx-auto'>
+      <h1> Book ticket</h1>
       <Form.Group controlId="touristId">
         <Form.Label>Tourist ID:</Form.Label>
         <Form.Control
@@ -80,8 +81,9 @@ const TicketForm = () => {
           </Form.Group>
         </>
       )}
-
-      <Button variant="primary" type="submit">
+      <br></br>
+      <br></br>
+      <Button variant="success" type="submit">
         Submit
       </Button>
     </Form>
