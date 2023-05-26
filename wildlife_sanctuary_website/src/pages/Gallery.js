@@ -1,6 +1,7 @@
 import React from 'react';
 import panda from '../images/panda.jpg';
 import hippo from '../images/hippo.jpeg';
+import FieldSet from '../components/Fieldset';
 
 const Gallery = () => {
   const animals = [
@@ -71,6 +72,7 @@ const Gallery = () => {
       imageSrc: 'https://images.pexels.com/photos/638738/pexels-photo-638738.jpeg?auto=compress&cs=tinysrgb&w=400',
       description: 'Penguins are flightless birds native to Antarctica and are known for their tuxedo-like appearance.'
     }
+ 
   ];
 
   return (

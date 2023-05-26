@@ -33,7 +33,7 @@ class Donate extends Component {
    const {donationamount,donationtype,donorname} = this.state;
    
     
-   axios.post("http://localhost:8085/api/donations",{donationamount,donationtype,donorname} ).then(
+   axios.post("http://localhost:8085/api/donations",{donorname,donationtype,donationamount} ).then(
     alert("Thanks for donation")
    ).catch(
     (ex)=>console.log(ex)

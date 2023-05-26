@@ -7,15 +7,14 @@ const TicketForm = () => {
   const [ride, setRide] = useState(false);
   const [rideAmount, setRideAmount] = useState('');
   const [rideId, setRideId] = useState('');
-
   const rides = [
     { id: 1, name: 'Ride 1', price: 10 },
     { id: 2, name: 'Ride 2', price: 15 },
     { id: 3, name: 'Ride 3', price: 20 },
   ];
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    
 
     if (ride) {
       // Go to the next page/form
