@@ -1,0 +1,15 @@
+.password-match {
+   
+    border: 1px solid green !important;
+}
+  
+  .password-mismatch {
+ 
+    border: 1px solid red !important;
+ 
+  }
+  
+  .password-normal {
+    background-color: #fff !important;
+  }
+  

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import ChipsDemo from '../components/Multiselect';
+import './Register.css'; // Import the CSS file for styling
 
 class Register extends Component {
   constructor(props) {
@@ -9,32 +10,28 @@ class Register extends Component {
       name: '',
       place: '',
       password: '',
-      confirmpassword : '',
+      confirmpassword: '',
       contact: '',
       languages: '',
+      passwordState: 'normal', // Added passwordState to track password match status
     };
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    {
-      if(this.state.name != "" && this.state.contact != '' && this.state.languages != '' && this.state.place != '')
-      {
-      if (this.state.password != this.state.confirmpassword)
-       {
-        alert('confirm password don\'t match ');
-       }
-       else{
-        alert('Success ');
+    const { name, contact, languages, place, password, confirmpassword } = this.state;
+
+    if (name !=='' && contact !=='' && languages !== '' ) {
+      if (password !== confirmpassword) {
+        alert("Confirm password doesn't match");
+      } else {
+        alert('Success');
         //axios
-       }
+      }
+    } else {
+      alert('Please fill in all details');
     }
-    else{
-      alert('Please fill all details ');
-    }
- 
-  }
   };
 
   handleNameChange = (e) => {
@@ -57,20 +54,24 @@ class Register extends Component {
   handlePasswordChange = (e) => {
     this.setState({ password: e.target.value });
   };
+
   handleConfirmpasswordChange = (e) => {
-    this.setState({ confirmpassword: e.target.value });
-   
+    const { password } = this.state;
+    const confirmpassword = e.target.value;
+    const passwordState = password === confirmpassword ? 'match' : 'mismatch';
+
+    this.setState({ confirmpassword, passwordState });
   };
-  
+
   render() {
-    const { name, place, password , confirmpassword ,contact, languages } = this.state;
+    const { name, place, password, confirmpassword, contact, languages, passwordState } = this.state;
 
     return (
-      <Container className=" justify-content-center align-items-start w-50 mx-auto" >
+      <Container className="justify-content-center align-items-start w-50 mx-auto">
         <div className="register-form">
           <h2>Register</h2>
           <br></br>
-            <br></br>
+          <br></br>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="name">
               <Form.Label>Name:</Form.Label>
@@ -88,16 +89,25 @@ class Register extends Component {
 
             <Form.Group controlId="confirmpassword">
               <Form.Label>Confirm password:</Form.Label>
-              <Form.Control type="password" value={confirmpassword} onChange={this.handleConfirmpasswordChange} />
-            </Form.Group>
-            <br></br>
-            <br></br>
-            <Form.Group controlId="place" value = {place}>
-            <Form.Label>Places to visit</Form.Label>
-            <ChipsDemo  ></ChipsDemo>
-           </Form.Group>
+              <Form.Control
+                type="password"
+                value={confirmpassword}
+                onChange={this.handleConfirmpasswordChange}
+                className={
+                  passwordState === 'match'
+                    ? 'password-match'
+                    : passwordState === 'mismatch'
+                    ? 'password-mismatch'
+                    : 'password-normal'
+                }
+              />
+              </Form.Group>
+
+
            <br></br>
             <br></br>
+
+
             <Form.Group controlId="contact">
               <Form.Label>Contact:</Form.Label>
               
