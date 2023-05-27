@@ -5,8 +5,9 @@ import ViewTicket from './ViewTicket';
 
 
 
-const Tourism = () => {
-  const [touristId, setTouristId] = useState('');
+const Tourism = (props) => {
+  const [touristId, setTouristId] = useState(props.touristId || '');
+
   const [type, setType] = useState('');
   const [ride, setRide] = useState('No ride');
   const [ticketnos, setTicketnos] = useState('No ride');
@@ -46,10 +47,13 @@ const Tourism = () => {
       <Form.Group controlId="touristId">
         <Form.Label>Tourist ID:</Form.Label>
         <Form.Control
-          type="text"
-          value={touristId}
-          onChange={(e) => setTouristId(e.target.value)}
-        />
+  type="text"
+  placeholder={props.touristId}
+  value={touristId}
+  onChange={(e) => setTouristId(e.target.value)}
+  disabled // Add the disabled attribute
+/>
+
       </Form.Group>
       <br></br>
       <Form.Group controlId="ticketnos">

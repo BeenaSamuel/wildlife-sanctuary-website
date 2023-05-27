@@ -13,6 +13,7 @@ class Login extends Component {
       password: '',
       error: '',
       redirectToOtherPage: false,
+      touristId : '',
       success:''
     };
   }
@@ -36,10 +37,13 @@ class Login extends Component {
       .get(`http://localhost:8081/api/tourists?name=${username}&password=${password}`)
       .then((response) => {
         const data = response.data;
+        
         if (data.length) {
           console.log('User exists!');
           this.props.onSignIn(); // Call the onSignIn prop function
-          this.setState({ redirectToOtherPage: true });
+
+          const touristId = data[0].id; 
+          this.setState({ touristId, redirectToOtherPage: true });
          
           // history.push('/Tourism');
           // this.setState({ success: 'Sign in success' });
@@ -63,6 +67,9 @@ class Login extends Component {
     // Set the isSignedIn state to false in the parent component
     this.props.onSignOut();
   };
+  updateTouristId = (id) => {
+    this.setState({ touristId: id });
+  };
 
   render() {
     // If the user is signed in, render a sign-out button
@@ -77,7 +84,7 @@ class Login extends Component {
       );
     }
     if (this.state.redirectToOtherPage) {
-      return <Tourism />;
+      return <Tourism  touristId = {this.state.touristId} updateTouristId={this.updateTouristId}/>;
     } else {
       
   
