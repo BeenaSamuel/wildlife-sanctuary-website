@@ -29,7 +29,7 @@ class Login extends Component {
     event.preventDefault();
     const { username, password } = this.state;
     // const { history } = useNavigate();
-    const { redirectToOtherPage } = this.state;
+    
 
     
     axios
