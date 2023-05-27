@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, ListGroup } from 'react-bootstrap';
 
-const TicketForm = () => {
+const Tourism = () => {
   const [touristId, setTouristId] = useState('');
   const [ticketType, setTicketType] = useState('');
   const [ride, setRide] = useState(false);
@@ -90,4 +90,4 @@ const TicketForm = () => {
   );
 };
 
-export default TicketForm;
+export default Tourism;

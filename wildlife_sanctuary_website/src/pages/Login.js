@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Tourism from './Tourism';
 import '../Login.css'; 
 import axios from 'axios';
 
@@ -11,6 +12,7 @@ class Login extends Component {
       username: '',
       password: '',
       error: '',
+      redirectToOtherPage: false,
       success:''
     };
   }
@@ -26,6 +28,10 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
+    // const { history } = useNavigate();
+    const { redirectToOtherPage } = this.state;
+
+    
     axios
       .get(`http://localhost:8081/api/tourists?name=${username}&password=${password}`)
       .then((response) => {
@@ -33,8 +39,12 @@ class Login extends Component {
         if (data.length) {
           console.log('User exists!');
           this.props.onSignIn(); // Call the onSignIn prop function
-          this.setState({ success: 'Sign in success' });
-          this.setState({ error: '' });
+          this.setState({ redirectToOtherPage: true });
+         
+          // history.push('/Tourism');
+          // this.setState({ success: 'Sign in success' });
+          // this.setState({ error: '' });
+
           
         } else {
           console.log('User does not exist!');
@@ -44,7 +54,8 @@ class Login extends Component {
       })
       .catch((error) => {
         console.error('Error fetching user data:', error);
-        this.setState({ error: 'Error signing in. ' });
+        
+        
       });
   };
 
@@ -65,7 +76,11 @@ class Login extends Component {
         </div>
       );
     }
-
+    if (this.state.redirectToOtherPage) {
+      return <Tourism />;
+    } else {
+      
+  
     // Otherwise, render the sign-in form
     return (
       <div className="App ">
@@ -109,6 +124,7 @@ class Login extends Component {
         </div>
       </div>
     );
+    }
   }
 }
 
