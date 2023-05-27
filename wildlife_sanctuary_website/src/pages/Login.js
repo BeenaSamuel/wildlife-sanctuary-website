@@ -65,11 +65,12 @@ class Login extends Component {
 
     // Otherwise, render the sign-in form
     return (
-      <div className="App">
+      <div className="App ">
         
-       <div className='Login mx-auto'>
+       <div className='mx-auto w-50'>
         <Form onSubmit={this.handleSubmit}>
-        <h1>Sign In</h1>
+          <br></br>
+        <h1 >Sign In</h1>
           <Form.Group className="mb-3" controlId="formBasicUsername">
             
             <Form.Control
