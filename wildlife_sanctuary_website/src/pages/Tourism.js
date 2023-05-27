@@ -1,34 +1,45 @@
 import React, { useState } from 'react';
 import { Form, Button, ListGroup } from 'react-bootstrap';
 import axios from "axios";
+import ViewTicket from './ViewTicket';
+
 
 
 const Tourism = () => {
   const [touristId, setTouristId] = useState('');
   const [type, setType] = useState('');
   const [ride, setRide] = useState('No ride');
+  const [ticketnos, setTicketnos] = useState('No ride');
   const [rideAmount, setRideAmount] = useState('');
-  
+  const [ticketview , setTicketview] = useState(false);
   const [ridecheck, setRideCheck] = useState(false);
   const rides = [
     { id: 1, name: 'Ridetype 1', price: 10 },
     { id: 2, name: 'Ridetype 2', price: 15 },
     { id: 3, name: 'Ridetype 3', price: 20 },
   ];
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const tickno = parseInt(ticketnos);
     
-   
-    
-   axios.post("http://localhost:8082/api/tickets",{type,ride,touristId} ).then(
-    alert("Tickets have been generated successfully")
-   ).catch(
-    (ex)=>console.log(ex)
-   )
-
-    
+    try {
+      for (let i = 0; i < tickno; i++) {
+        await axios.post("http://localhost:8082/api/tickets", { type, ride, touristId });
+      }
+      
+      alert("Tickets have been generated successfully");
+      setTicketview(true);
+      
+    } catch (error) {
+      console.log('Error in posting');
+    }
   };
+  
+  if (ticketview){
+    return <ViewTicket touristid = {touristId} />
+  }
 
+  else{
   return (
     <Form onSubmit={handleFormSubmit} className='w-50 mx-auto'>
       <h1> Book ticket</h1>
@@ -40,7 +51,16 @@ const Tourism = () => {
           onChange={(e) => setTouristId(e.target.value)}
         />
       </Form.Group>
-
+      <br></br>
+      <Form.Group controlId="ticketnos">
+        <Form.Label>Number of tickets:</Form.Label>
+        <Form.Control
+          type="number"
+          value={ticketnos}
+          onChange={(e) => setTicketnos(e.target.value)}
+        />
+      </Form.Group>
+      <br></br>
       <Form.Group controlId="type">
         <Form.Label>Ticket Type:</Form.Label>
         <Form.Control
@@ -53,7 +73,7 @@ const Tourism = () => {
           <option value="full">5 years and above (Full ticket)</option>
         </Form.Control>
       </Form.Group>
-
+      <br></br>
       <Form.Group controlId="ridecheck">
         <Form.Label>Ride:</Form.Label>
         <Form.Control
@@ -65,7 +85,7 @@ const Tourism = () => {
           <option value={true}>Yes</option>
         </Form.Control>
       </Form.Group>
-
+      <br></br>
       {ridecheck && (
         <>
           <Form.Group controlId="ride">
@@ -93,5 +113,6 @@ const Tourism = () => {
     </Form>
   );
 };
+}
 
 export default Tourism;
