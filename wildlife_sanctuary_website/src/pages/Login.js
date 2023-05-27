@@ -11,6 +11,7 @@ class Login extends Component {
       username: '',
       password: '',
       error: '',
+      success:''
     };
   }
 
@@ -31,8 +32,10 @@ class Login extends Component {
         const data = response.data;
         if (data.length) {
           console.log('User exists!');
-          this.setState({ error: 'Sign in success' });
           this.props.onSignIn(); // Call the onSignIn prop function
+          this.setState({ success: 'Sign in success' });
+          this.setState({ error: '' });
+          
         } else {
           console.log('User does not exist!');
           this.setState({ error: 'Invalid username or password' });
@@ -41,7 +44,7 @@ class Login extends Component {
       })
       .catch((error) => {
         console.error('Error fetching user data:', error);
-        this.setState({ error: 'Error signing in. Please try again later.' });
+        this.setState({ error: 'Error signing in. ' });
       });
   };
 
@@ -94,13 +97,14 @@ class Login extends Component {
           </Form.Group>
 
 
-          <Button variant="primary" type="submit">
+          <Button variant="success" type="submit">
             Sign In
           </Button>
 
         
 
           {this.state.error && <div className="mt-3 text-danger">{this.state.error}</div>}
+          {this.state.success && <div className="mt-3 text-success">{this.state.success}</div>}
         </Form>
         </div>
       </div>
