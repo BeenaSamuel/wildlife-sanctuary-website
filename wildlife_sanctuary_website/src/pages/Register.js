@@ -91,7 +91,7 @@ class Register extends Component {
     const { name, amount, password, confirmpassword, contact, languages, passwordState } = this.state;
 
     return (
-      <Container className="justify-content-center align-items-start w-50 mx-auto">
+      <Container className="justify-content-center align-items-start w-50 mx-auto" >
         <div className="register-form">
           <h2>Register</h2>
           <br></br>
@@ -162,6 +162,8 @@ class Register extends Component {
               Register
             </Button>
           </Form>
+
+          
         </div>
       </Container>
     );

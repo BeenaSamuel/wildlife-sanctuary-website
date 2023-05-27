@@ -1,34 +1,22 @@
-.p-datatable-custom {
-  margin: 20px;
-  font-size: 14px;
+.custom-datatable {
+  background-color: #44ae31; /* Set the background color */
 }
 
-.p-datatable-custom .p-datatable-header {
-  background-color: #283593; /* Example: Dark blue */
-  color: #ffffff; /* Example: White */
-  border: none;
+.custom-datatable .p-datatable-thead th {
+  background-color: #49714c; /* Set the header background color */
+  color: #333; /* Set the header text color */
 }
 
-.p-datatable-custom .p-datatable-thead > tr > th {
-  background-color: #3f51b5; /* Example: Blue */
-  color: #ffffff; /* Example: White */
-  border: none;
-  text-align: left;
+.custom-datatable .p-datatable-tbody td {
+  background-color: #c6dbbb; /* Set the body cell background color */
+  color: #0e3d09; /* Set the body cell text color */
 }
 
-.p-column-custom {
-  text-align: center;
+.custom-datatable .p-paginator {
+  background-color: #ebebeb; /* Set the paginator background color */
+  color: #09451d; /* Set the paginator text color */
 }
 
-.p-datatable-custom .p-datatable-tbody > tr:nth-child(even) {
-  background-color: #f2f2f2; /* Example: Light gray */
-}
-
-.p-datatable-custom .p-paginator {
-  border: none;
-  margin-top: 20px;
-}
-
-.p-datatable-custom .p-paginator .p-paginator-current {
-  color: #333;
+.custom-datatable .p-paginator .p-paginator-current-page-report {
+  color: #728b70;
 }
