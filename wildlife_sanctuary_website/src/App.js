@@ -11,6 +11,7 @@ import Gallery from "./pages/Gallery";
 import ViewDonors from "./pages/View Donors";
 import { Route, Routes } from "react-router-dom"
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -56,7 +57,13 @@ function App() {
         
         
         {isSignedIn ? (
-          <button onClick={() => setIsSignedIn(false)}>Sign Out</button>
+          <div>
+          <br></br>
+          
+          <Button variant="success" type="submit" onClick={() => setIsSignedIn(false)} >
+            Sign out
+          </Button>
+          </div>
         ) : (
           null
         )}

@@ -24,24 +24,24 @@ class Register extends Component {
 
     const { name, password,amount,contact, prefferedlang,   confirmpassword } = this.state;
 
-    if (name !='' && contact !=''  && amount != '') {
+    if (name !='' && contact !=''  && amount != '') 
+    {
       if (password != confirmpassword) {
         alert("Confirm password doesn't match");
       } 
       else if (amount != '5000') {
-         
-         
             alert("Rs.5000 must be paid")
       }
-          else{
-        axios.post("http://localhost:8081/api/tourist",{name,password,amount,contact,prefferedlang} ).then(
+         
+      else{
+        axios.post("http://localhost:8081/api/tourists",{name,password,amount,contact,prefferedlang} ).then(
           alert("Registration success")
          ).catch(
           (ex)=>console.log(ex)
          )
-         }
       }
-    
+      
+    }
     
     else {
       alert('Please fill in all details');

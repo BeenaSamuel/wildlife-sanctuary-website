@@ -9,4 +9,6 @@ public interface TouristService {
 
     Tourist getTouristById(Long touristId);
     public List<Tourist> getAllTourists();
+
+	Tourist getTouristByNameAndPassword(String name, String password);
 }

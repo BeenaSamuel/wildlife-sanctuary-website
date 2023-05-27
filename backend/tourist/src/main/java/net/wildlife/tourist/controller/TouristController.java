@@ -6,6 +6,7 @@ import net.wildlife.tourist.entity.Tourist;
 import net.wildlife.tourist.entity.Tourist;
 import net.wildlife.tourist.service.TouristService;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,21 @@ public class TouristController {
         return ResponseEntity.ok(tourist);
     }
     
+//    @GetMapping
+//    public ResponseEntity<List<Tourist>> getAllTourists(){
+//    	List<Tourist> tourist = touristService.getAllTourists();
+//        return ResponseEntity.ok(tourist);
+//    }
+    
     @GetMapping
-    public ResponseEntity<List<Tourist>> getAllTourists(){
-    	List<Tourist> tourist = touristService.getAllTourists();
-        return ResponseEntity.ok(tourist);
+    public ResponseEntity<List<Tourist>> getTouristByNameAndPassword(@RequestParam("name") String name, @RequestParam("password") String password) {
+        Tourist tourist = touristService.getTouristByNameAndPassword(name, password);
+        if (tourist != null) {
+            List<Tourist> singleUserList = Collections.singletonList(tourist);
+            return ResponseEntity.ok(singleUserList);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
 }

@@ -31,11 +31,13 @@ class Login extends Component {
         const data = response.data;
         if (data.length) {
           console.log('User exists!');
+          this.setState({ error: 'Sign in success' });
           this.props.onSignIn(); // Call the onSignIn prop function
         } else {
           console.log('User does not exist!');
           this.setState({ error: 'Invalid username or password' });
         }
+        
       })
       .catch((error) => {
         console.error('Error fetching user data:', error);

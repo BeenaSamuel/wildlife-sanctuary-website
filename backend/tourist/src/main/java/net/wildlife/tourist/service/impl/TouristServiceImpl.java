@@ -50,4 +50,10 @@ public class TouristServiceImpl implements TouristService {
 		
 		return tourists;
 	}
+    
+    @Override
+    public Tourist getTouristByNameAndPassword(String name, String password) {
+        return touristRepository.findByNameAndPassword(name, password);
+    }
+
 }
