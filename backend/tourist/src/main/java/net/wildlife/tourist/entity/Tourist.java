@@ -1,12 +1,6 @@
 package net.wildlife.tourist.entity;
 
-
-
-
 import javax.persistence.*;
-
-
-
 
 @Entity
 @Table(name = "tourists")

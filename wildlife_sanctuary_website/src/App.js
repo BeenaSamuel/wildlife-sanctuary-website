@@ -35,10 +35,10 @@ function App() {
 
  
   return (
-    <>
+    <div className="mx-auto">
        <Navbar isSignedIn={isSignedIn} />
      
-      <div className="container">
+      <div className="container mx-auto">
         <Routes>
         
           <Route path="/" element={<Home />} />
@@ -65,7 +65,7 @@ function App() {
       
 
       
-    </>
+    </div>
   )
 }
 
