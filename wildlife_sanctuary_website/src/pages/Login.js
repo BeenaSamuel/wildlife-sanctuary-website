@@ -44,11 +44,11 @@ class Login extends Component {
 
           const touristId = data[0].id; 
           this.setState({ touristId, redirectToOtherPage: true });
-         
+          localStorage.setItem('touristId', touristId);
           // history.push('/Tourism');
           // this.setState({ success: 'Sign in success' });
           // this.setState({ error: '' });
-
+   
           
         } else {
           console.log('User does not exist!');

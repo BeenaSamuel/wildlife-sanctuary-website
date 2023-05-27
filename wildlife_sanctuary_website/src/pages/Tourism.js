@@ -6,12 +6,13 @@ import ViewTicket from './ViewTicket';
 
 
 const Tourism = (props) => {
-  const [touristId, setTouristId] = useState(props.touristId || '');
+  const [touristId, setTouristId] = useState(localStorage.getItem('touristId') || '');
+
 
   const [type, setType] = useState('');
   const [ride, setRide] = useState('No ride');
   const [ticketnos, setTicketnos] = useState('No ride');
-  const [rideAmount, setRideAmount] = useState('');
+ 
   const [ticketview , setTicketview] = useState(false);
   const [ridecheck, setRideCheck] = useState(false);
   const rides = [
