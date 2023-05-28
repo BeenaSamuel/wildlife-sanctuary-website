@@ -1,5 +1,5 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 
 
@@ -24,6 +24,9 @@ export default function Navbar({ isSignedIn }) {
          <CustomLink to="/Gallery">Gallery</CustomLink>
         <CustomLink to="/Donate">Donate</CustomLink>
         {!isSignedIn && <CustomLink to="/Login">Sign in</CustomLink>}
+        {/* <Button color='teal' fluid size='large' >
+            Logout
+          </Button> */}
         
       </ul>
 

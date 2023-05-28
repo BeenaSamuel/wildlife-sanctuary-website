@@ -73,17 +73,7 @@ class Login extends Component {
 
   render() {
     // If the user is signed in, render a sign-out button
-    if (this.props.isSignedIn) {
-      return (
-        <div className="App">
-         
-          <h1>Sign Out</h1>
-          <Button variant="primary" onClick={this.handleSignOut}>
-            Sign Out
-          </Button>
-        </div>
-      );
-    }
+   
     if (this.state.redirectToOtherPage) {
       return <Tourism  touristId = {this.state.touristId} updateTouristId={this.updateTouristId}/>;
     } else {

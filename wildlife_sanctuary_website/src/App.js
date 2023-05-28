@@ -47,7 +47,7 @@ function App() {
           <Route path="/" element={<HomepageLayout />} />
           <Route path="/Feedback" element={<Feedback />} />
           <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/Donate" element={<div style={{ display: 'flex', justifyContent: 'center' }}><Donate /></div>} />
+          <Route path="/Donate" element={<Donate />} />
           <Route path="/Instructions" element={<Instructions />} />
           <Route path="/Whywe" element={<Whywe />} />
           <Route path="/Tourism" element={<Tourism />} />
@@ -56,21 +56,20 @@ function App() {
           <Route path="/View Donors" element={<ViewDonors />} />
           <Route path="/Login" element={<Login onSignIn={handleSignIn} />} />
           
-          
         </Routes>
+        
+        
         {isSignedIn ? (
           <div>
           <br></br>
           
-          <Button className= 'signoutbutton 'variant="success" type="submit" onClick={() => setIsSignedIn(false)} >
+          <Button variant="success" type="submit" onClick={() => setIsSignedIn(false)} >
             Sign out
           </Button>
           </div>
         ) : (
           null
         )}
-        
-       
       
       </div>
       
