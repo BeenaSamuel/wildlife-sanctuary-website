@@ -9,6 +9,7 @@ import Feedback from "./pages/Feedback";
 import Tourism from "./pages/Tourism";
 import Gallery from "./pages/Gallery";
 import ViewDonors from "./pages/View Donors";
+import HomepageLayout from "./pages/Homepage";
 import { Route, Routes } from "react-router-dom"
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -40,16 +41,17 @@ function App() {
     <div >
        <Navbar isSignedIn={isSignedIn} />
      
-      <div className="container mx-auto">
+      <div className="container mx-auto banner-container">
         <Routes>
         
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomepageLayout />} />
           <Route path="/Feedback" element={<Feedback />} />
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Donate" element={<div style={{ display: 'flex', justifyContent: 'center' }}><Donate /></div>} />
           <Route path="/Instructions" element={<Instructions />} />
           <Route path="/Whywe" element={<Whywe />} />
           <Route path="/Tourism" element={<Tourism />} />
+          <Route path="/Homepage" element={<HomepageLayout />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/View Donors" element={<ViewDonors />} />
           <Route path="/Login" element={<Login onSignIn={handleSignIn} />} />

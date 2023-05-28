@@ -1,15 +1,15 @@
 .custom-datatable {
-  background-color: #44ae31; /* Set the background color */
+  background-color: #050505; /* Set the background color */
 }
 
 .custom-datatable .p-datatable-thead th {
-  background-color: #49714c; /* Set the header background color */
-  color: #333; /* Set the header text color */
+  background-color:#484343b8; /* Set the header background color */
+  color: #ffffff; /* Set the header text color */
 }
 
 .custom-datatable .p-datatable-tbody td {
-  background-color:#4e692b3d; /* Set the body cell background color */
-  color: #0e3d09; /* Set the body cell text color */
+  background-color:#484343b8; /* Set the body cell background color */
+  color: #ffffff; /* Set the body cell text color */
 }
 
 .custom-datatable .p-paginator {
@@ -18,5 +18,5 @@
 }
 
 .custom-datatable .p-paginator .p-paginator-current-page-report {
-  color: #728b70;
+  color: #484343b8;
 }

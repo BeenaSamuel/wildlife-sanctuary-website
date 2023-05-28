@@ -35,7 +35,6 @@ const [touristData, setTouristData] = useState({});
               <h2>Tourist Details</h2>
               <p>ID: {touristData.id}</p>
               <p>Name: {touristData.name}</p>
-              <p>Access Place: {touristData.accessplace}</p>
               <p>Amount: {touristData.amount}</p>
               <p>Contact: {touristData.contact}</p>
               <p>Preferred Language: {touristData.prefferedlang}</p>

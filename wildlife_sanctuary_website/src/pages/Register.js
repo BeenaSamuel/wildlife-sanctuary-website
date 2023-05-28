@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Button, Form, Segment, Grid, Dropdown } from 'semantic-ui-react';
 import axios from "axios";
 
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -83,11 +84,11 @@ class Register extends Component {
       { key: 'Hindi', value: 'Hindi', text: 'Hindi' },
     ];
     return (
-      <Container className="justify-content-center align-items-start w-50 mx-auto">
+      <Container className="banner-container justify-content-center align-items-start w-50 mx-auto ">
         <div className="register-form">
          <br></br>
           
-          <Segment inverted color="teal">
+          <Segment inverted>
             <Form  inverted onSubmit={this.handleSubmit}>
             <h2 className='mx-auto'>Register</h2>
               <Grid columns={2} stackable>

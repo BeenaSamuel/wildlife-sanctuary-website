@@ -58,8 +58,8 @@ function ViewDonors() {
   const header = renderHeader();
 
   return (
-    <div >
-    <div className="card ">
+    
+    <div inverted className="card donor ">
       <DataTable
         value={filteredData} // Display the filtered data in the DataTable
         paginator
@@ -69,14 +69,14 @@ function ViewDonors() {
         header={header}
         emptyMessage="No donors found."
         className="custom-datatable" 
-        
+        inverted
       >
         <Column field="donorname" header="Name" filter />
         <Column field="donationtype" header="Type" filter />
         <Column field="donationamount" header="Amount" filter />
       </DataTable>
     </div>
-    </div>
+    
   );
 }
 

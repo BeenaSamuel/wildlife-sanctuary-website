@@ -3,6 +3,7 @@ import panda from '../images/panda.jpg';
 import hippo from '../images/hippo.jpeg';
 import FieldSet from '../components/Fieldset';
 
+
 const Gallery = () => {
   const animals = [
     {
@@ -76,7 +77,7 @@ const Gallery = () => {
   ];
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+    <div className = 'gallery' style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
       {animals.map((animal, index) => (
         <div key={index} style={{ width: '30%', marginBottom: '30px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
           <br></br> <br></br><h2 style={{ textAlign: 'center', padding: '10px 0' }}>{animal.name}</h2>

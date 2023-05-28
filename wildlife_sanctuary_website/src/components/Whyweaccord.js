@@ -16,7 +16,7 @@ export default class WhyweAccord extends Component {
     const { activeIndex } = this.state
 
     return (
-      <Segment inverted className='brown text-justify'>
+      <Segment inverted className=' text-justify'>
         <Accordion inverted>
           <Accordion.Title
             active={activeIndex === 0}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+
 import axios from "axios";
+
+import { Container, Button, Form, Segment, Grid, Dropdown } from 'semantic-ui-react';
 
 
 class Donate extends Component {
@@ -42,37 +44,60 @@ class Donate extends Component {
   };
 
   render() {
+    const languageOptions = [
+      { key: 'Individual', value: 'Individual', text: 'Individual' },
+      { key: 'Organization', value: 'Organization', text: 'Organization' },
+     
+    ];
     return (
-      <Container className="d-flex justify-content-center align-items-start" style={{ minHeight: '100vh' }}>
-        <div className="donate-form">
-          <h1>Donate</h1>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Group controlId="donorName">
-              <Form.Label><h4>Donor Name:</h4></Form.Label>
-              <Form.Control type="text"  onChange={this.handleDonorNameChange} />
-            </Form.Group>
-
-            <Form.Group controlId="donationSource">
-              <Form.Label><h4>Donation Type:</h4></Form.Label>
-              <Form.Control as="select"  onChange={this.handleDonationSourceChange}>
-                  <option>Select </option>
-                <option value="organization">Organization</option>
-                <option value="individual">Individual</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="donationAmount">
-              <Form.Label><h4>Donation Amount (INR):</h4></Form.Label>
-              <Form.Control type="number"  onChange={this.handleDonationAmountChange} />
-              <br/>
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Donate
-            </Button>
-          </Form>
-        </div>
-      </Container>
+      
+     
+         <Segment inverted >
+            <Form  inverted onSubmit={this.handleSubmit} >
+            <h2 className='mx-auto'>Donate</h2>
+              <Grid columns={2} stackable>
+                <Grid.Row className='mx-auto'>
+                  <Grid.Column width={8} className='mx-auto'>
+                    <Form.Field>
+                      <label>Donator Name:</label>
+                      <input type="text" value={this.state.donorname} onChange={this.handleDonorNameChange} />
+                    </Form.Field>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row className='mx-auto'>
+             
+                  <Grid.Column width={8} className='mx-auto'>
+                    <Form.Field>
+                      <label>Amount:</label>
+                      <input type="number" value={this.state.donationamount} onChange={this.handleDonationAmountChange} />
+                    </Form.Field>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row className='mx-auto'>
+                  <Grid.Column width={8} className='mx-auto'>
+                    <Form.Field>
+                      <label>Type of donation :</label>
+                      <Dropdown
+                        placeholder="Select Donation source"
+                        fluid
+                        selection
+                        options={languageOptions}
+                        value={this.state.donationsource}
+                        onChange={this.handleDonationSourceChange}
+                      />
+                    </Form.Field>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+              <br></br>
+              <br></br>
+              <Button primary type="submit" className='mx-auto'>
+                Register
+              </Button>
+            </Form>
+          </Segment>
+     
+     
     );
   }
 }
