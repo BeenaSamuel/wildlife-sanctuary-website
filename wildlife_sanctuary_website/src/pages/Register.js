@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Button, Form, Segment, Grid, Dropdown } from 'semantic-ui-react';
 import axios from "axios";
+import './Register.css'
+
 
 
 class Register extends Component {
@@ -84,7 +86,7 @@ class Register extends Component {
       { key: 'Hindi', value: 'Hindi', text: 'Hindi' },
     ];
     return (
-      <Container className="banner-container justify-content-center align-items-start w-50 mx-auto ">
+      <Container className=" justify-content-center align-items-start w-50 mx-auto register ">
         <div className="register-form">
          <br></br>
           

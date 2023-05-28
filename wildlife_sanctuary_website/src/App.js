@@ -56,20 +56,21 @@ function App() {
           <Route path="/View Donors" element={<ViewDonors />} />
           <Route path="/Login" element={<Login onSignIn={handleSignIn} />} />
           
+          
         </Routes>
-        
-        
         {isSignedIn ? (
           <div>
           <br></br>
           
-          <Button variant="success" type="submit" onClick={() => setIsSignedIn(false)} >
+          <Button className= 'signoutbutton 'variant="success" type="submit" onClick={() => setIsSignedIn(false)} >
             Sign out
           </Button>
           </div>
         ) : (
           null
         )}
+        
+       
       
       </div>
       

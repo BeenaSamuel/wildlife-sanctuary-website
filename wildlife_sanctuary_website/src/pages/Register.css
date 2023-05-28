@@ -13,3 +13,6 @@
     background-color: #fff !important;
   }
   
+  .banner-container:has(.register){
+    display: inherit ;
+}

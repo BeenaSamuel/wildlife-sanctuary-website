@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, ListGroup } from 'react-bootstrap';
 import axios from "axios";
 import ViewTicket from './ViewTicket';
+import './Home.css';
 
 
 
@@ -43,10 +44,10 @@ const Tourism = (props) => {
 
   else{
   return (
-    <Form onSubmit={handleFormSubmit} className='w-50 mx-auto'>
+    <Form onSubmit={handleFormSubmit} className='w-50 mx-auto donor'>
       <h1> Book ticket</h1>
       <Form.Group controlId="touristId">
-        <Form.Label>Tourist ID:</Form.Label>
+        <Form.Label >Tourist ID:</Form.Label>
         <Form.Control
   type="text"
   placeholder={props.touristId}

@@ -23,10 +23,15 @@
 
   .banner-container:has(.whywe){
     align-items: inherit ;
+    
 }
 
 .banner-container:has(.donor){
     display: inherit ;
+}
+
+.banner-container:has(.home){
+    flex-direction: column ;
 }
 
 

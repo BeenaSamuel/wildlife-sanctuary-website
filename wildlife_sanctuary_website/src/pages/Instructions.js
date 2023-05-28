@@ -7,7 +7,7 @@ const Instructions = () => {
   const donts = [ 'Do not feed the animals.', 'Do not touch or attempt to interact with the animals.', 'Do not smoke or use any tobacco products.', 'Do not litter or leave trash behind.', 'Do not bring pets or other animals into the sanctuary.', 'Do not disrupt the peace and tranquility of the sanctuary.' ];
 
   return (
-    <div >
+    <div className='donor'>
         <br></br>
         <br></br><br></br>
     <div style={{ display: 'flex', padding: '20px', backgroundColor: 'white' }}>
