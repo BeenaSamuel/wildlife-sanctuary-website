@@ -37,7 +37,7 @@ function App() {
 
  
   return (
-    <div className="mx-auto">
+    <div >
        <Navbar isSignedIn={isSignedIn} />
      
       <div className="container mx-auto">

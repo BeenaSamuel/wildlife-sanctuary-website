@@ -9,7 +9,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <section className='home'>
+      <section className='mx-auto'>
         <div>
           <div className="carousel-wrapper">
             <Carousel className="carousel">
