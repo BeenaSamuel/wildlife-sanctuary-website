@@ -87,7 +87,7 @@ class Register extends Component {
         <div className="register-form">
          <br></br>
           
-          <Segment inverted color="grey">
+          <Segment inverted color="teal">
             <Form  inverted onSubmit={this.handleSubmit}>
             <h2 className='mx-auto'>Register</h2>
               <Grid columns={2} stackable>

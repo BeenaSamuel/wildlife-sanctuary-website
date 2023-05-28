@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Link} from "react-router-dom"
 import Tourism from './Tourism';
 import '../Login.css'; 
 import axios from 'axios';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 class Login extends Component {
   constructor(props) {
@@ -76,6 +76,7 @@ class Login extends Component {
     if (this.props.isSignedIn) {
       return (
         <div className="App">
+         
           <h1>Sign Out</h1>
           <Button variant="primary" onClick={this.handleSignOut}>
             Sign Out
@@ -91,44 +92,39 @@ class Login extends Component {
     // Otherwise, render the sign-in form
     return (
       <div className="App ">
-        
-       <div className='mx-auto w-50'>
-        <Form onSubmit={this.handleSubmit}>
-          <br></br>
-        <h1 >Sign In</h1>
-          <Form.Group className="mb-3" controlId="formBasicUsername">
-            
-            <Form.Control
-              className="w-50 mx-auto"
-              type="text"
-              placeholder="Enter username"
-              value={this.state.username}
-              onChange={this.handleUsernameChange}
-            />
-          </Form.Group>
+        <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='teal' textAlign='center'>
+        <Image src='/tiger3.jpg' /> Log-in to your account
+      </Header>
+      <Form size='large' onSubmit={this.handleSubmit}>
+        <Segment stacked>
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={this.state.username}
+              onChange={this.handleUsernameChange}/>
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Password'
+            type='password'
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+          />
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-           
-            <Form.Control
-              className="w-50 mx-auto"
-              type="password"
-              placeholder="Enter password"
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
-          </Form.Group>
-
-
-          <Button variant="success" type="submit">
-            Sign In
+          <Button color='teal' fluid size='large'>
+            Login
           </Button>
-
-        
-
-          {this.state.error && <div className="mt-3 text-danger">{this.state.error}</div>}
+        </Segment>
+        {this.state.error && <div className="mt-3 text-danger">{this.state.error}</div>}
           {this.state.success && <div className="mt-3 text-success">{this.state.success}</div>}
-        </Form>
-        </div>
+      </Form>
+      <Message>
+        New to us? <Link to='/Register'>Sign Up</Link>
+      </Message>
+    </Grid.Column>
+  </Grid>
+
+      
       </div>
     );
     }
