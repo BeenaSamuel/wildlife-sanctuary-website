@@ -9,11 +9,17 @@ public class Tourist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "password")
     private String password;
    
+    @Column(name = "amount")
+    
     private Long amount;
+   
     private Long contact;
+    
     private String prefferedlang;
 	public Long getId() {
 		return id;

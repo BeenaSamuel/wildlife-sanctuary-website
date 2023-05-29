@@ -45,11 +45,7 @@
 		</dependency>
 
 		
-		<dependency>
-			<groupId>net.wildlife</groupId>
-			<artifactId>ticket</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 	</dependencies>
 
 
