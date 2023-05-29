@@ -105,7 +105,7 @@ const Tourism = (props) => {
               value={ride}
               onChange={(e) => setRide(e.target.value)}
             >
-              <option value="">Select a ride</option>
+              <option value="ride">Select a ride</option>
               {rides.map((ride) => (
                 <option key={ride.id} value={ride.name}>
                   {ride.name} (Rs{ride.price})

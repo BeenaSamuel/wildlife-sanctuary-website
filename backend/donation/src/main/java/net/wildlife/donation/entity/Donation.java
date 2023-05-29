@@ -16,8 +16,8 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String donorname;
-    public String donationtype;
-    public Long donationamount;
+    private String donationtype;
+    private Long donationamount;
 
 	public Long getId() {
 		return id;
