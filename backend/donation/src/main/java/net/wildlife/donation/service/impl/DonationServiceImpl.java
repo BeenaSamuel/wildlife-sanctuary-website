@@ -24,13 +24,12 @@ public class DonationServiceImpl implements DonationService {
 	private DonationRepository donationRepository;
 
     
-   
-
     public DonationServiceImpl(DonationRepository donationRepository) {
 		
 		this.donationRepository = donationRepository;
 	}
 
+    
 	@Transactional
 	@Override
     public Donation saveDonation(Donation donation) {
@@ -43,11 +42,12 @@ public class DonationServiceImpl implements DonationService {
         return donationRepository.findById(donationId).get();
     }
     
+    
     @Override
 	public List<Donation> getAllDonations() {
 		
 		List<Donation> donations = donationRepository.findAll();
-		
+	
 		return donations;
 	}
 }

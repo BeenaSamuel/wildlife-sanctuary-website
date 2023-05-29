@@ -10,4 +10,9 @@ class DonationApplicationTests {
 	void contextLoads() {
 	}
 
+
+	@Test
+	public void main() {
+		DonationApplication.main(new String[] {});
+	}
 }

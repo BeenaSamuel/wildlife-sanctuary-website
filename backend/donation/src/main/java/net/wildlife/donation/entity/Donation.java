@@ -1,13 +1,5 @@
 package net.wildlife.donation.entity;
-
-
-
-
 import javax.persistence.*;
-
-
-
-
 @Entity
 @Table(name = "donations")
 
@@ -56,4 +48,5 @@ public class Donation {
 		
 	}
     
+	
 }

@@ -55,7 +55,7 @@ class Donate extends Component {
          <Segment inverted className='donate'>
             <Form  inverted onSubmit={this.handleSubmit} >
             <h2 className='mx-auto'>Donate</h2>
-              <Grid columns={2} stackable>
+              <Grid columns={3} stackable>
                 <Grid.Row className='mx-auto'>
                   <Grid.Column width={8} className='mx-auto'>
                     <Form.Field>
@@ -82,7 +82,7 @@ class Donate extends Component {
                         fluid
                         selection
                         options={languageOptions}
-                        value={this.state.donationsource}
+                        value={this.state.donationtype}
                         onChange={this.handleDonationSourceChange}
                       />
                     </Form.Field>
