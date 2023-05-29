@@ -70,18 +70,7 @@ Conservation endeavors strive to secure their future, a majestic sanctuary to en
     <br></br>
     <br></br>
    </Segment>
-   <Segment  textAlign='left'>
-    <Image src='./africanphant.jpg' size='medium' floated='right' />
-    <h3 className='text-left'>African Elephant</h3>
-    <p>
-    Towering and wise, African Elephants traverse vast savannas.
-Their magnificent tusks and familial bonds are a testament to their grandeur.
-Poaching for ivory and habitat fragmentation endanger their legacy.
-Conservation endeavors strive to secure their future, a majestic sanctuary to ensure.
-    </p>
-    <br></br>
-    <br></br>
-  </Segment>
+
   </Segment.Group>
 )
 
