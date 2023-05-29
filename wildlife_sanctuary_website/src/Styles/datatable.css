@@ -5,6 +5,8 @@
   .custom-datatable .p-datatable-thead th {
     background-color: #ebebeb; /* Set the header background color */
     color: #333; /* Set the header text color */
+    font-family: 'Aoboshi One', serif;
+    font-size: 21px;
   }
   
   .custom-datatable .p-datatable-tbody td {

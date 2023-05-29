@@ -4,6 +4,7 @@ import Tourism from './Tourism';
 import '../Login.css'; 
 import axios from 'axios';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { useHistory } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class Login extends Component {
           const touristId = data[0].id; 
           this.setState({ touristId, redirectToOtherPage: true });
           localStorage.setItem('touristId', touristId);
+          
           // history.push('/Tourism');
           // this.setState({ success: 'Sign in success' });
           // this.setState({ error: '' });

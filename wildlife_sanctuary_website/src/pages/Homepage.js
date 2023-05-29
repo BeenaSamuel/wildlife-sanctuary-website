@@ -12,10 +12,10 @@ const HomepageLayout = (props) => {
       };
     return (
         <div style={homeStyles}>
-            <div className="banner-container" style={{display:'flex' , alignItems:'center',flexDirection:'column'}}>
+            <div className="banner-container home" style={{ alignItems:'center',flexDirection:'column'}}>
                 <div className="text-center">
-                    <h1 className=" text-6xl text-orange-600 font-bold">Preserving Nature's Harmony </h1>
-                    <h4 className="text-4xl mt-8 text-white">Harnessing Conservation Efforts to Safeguard Biodiversity and Foster a Sustainable Future</h4>
+                    <h1 className=" titlefont">Preserving Nature's Harmony </h1>
+                    <h4 className="subtt">Harnessing Conservation Efforts to Safeguard Biodiversity and Foster a Sustainable Future</h4>
                 </div>
             </div>
            

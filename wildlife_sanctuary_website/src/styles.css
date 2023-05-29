@@ -4,8 +4,8 @@
   
   body {
     margin: 0;
-    background-color: #c298d3;
-    color: #100876;
+    background-color:green;
+    color:white;
   }
   
   .container {
@@ -14,18 +14,21 @@
   }
   
   .nav {
-    background-color:#f2f4e6;
-    color:#198754;
+    background-color:#082e0e;
+    color:#e2f5ec;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     gap: 2rem;
     padding: 1%;
+    font-family: 'Roboto Slab', serif;
+  font-size: 18;
   }
   
   .site-title {
     font-size: 2rem;
-    align-self: flex-start
+    align-self: flex-start;
+    font-family : 'Roboto Slab', serif;   
   }
   
   .nav ul {
@@ -46,13 +49,14 @@
   }
   
   .nav li.active {
-    background-color:#8b8e26;
+    background-color:#032009;
     color: white;
     text-decoration: underline;
   }
   
   .nav li:hover {
-    background-color: #a2d497;
+    background-color: #ffffff;
+    color: white;
   }
  
   .p-button{

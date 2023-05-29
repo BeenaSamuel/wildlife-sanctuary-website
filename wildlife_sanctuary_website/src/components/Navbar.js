@@ -17,6 +17,7 @@ export default function Navbar({ isSignedIn }) {
         
        <CustomLink to="/">Home</CustomLink>
         {isSignedIn && <CustomLink to="Tourism">Tourism</CustomLink>}
+       
         {!isSignedIn && <CustomLink to="/Register">Register</CustomLink>}
          <CustomLink to="/View Donors">View Donors</CustomLink>
         <CustomLink to="/Whywe">Why we?</CustomLink>

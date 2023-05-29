@@ -42,7 +42,7 @@ function ViewDonors() {
   
   const renderHeader = () => {
     return (
-      <div className="flex justify-content-end" >
+      <div className="flex justify-content-end home " >
         <span className="p-input-icon-left">
           <i className="pi pi-search" />
           <InputText
@@ -72,8 +72,8 @@ function ViewDonors() {
         inverted
       >
         <Column field="donorname" header="Name" filter />
-        <Column field="donationtype" header="Type" filter />
-        <Column field="donationamount" header="Amount" filter />
+        <Column field="donationtype" header="Type" filter  />
+        <Column field="donationamount" header="Amount" filter  />
       </DataTable>
     </div>
     

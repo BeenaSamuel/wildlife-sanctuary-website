@@ -52,7 +52,7 @@ class Donate extends Component {
     return (
       
      
-         <Segment inverted >
+         <Segment inverted className='donate'>
             <Form  inverted onSubmit={this.handleSubmit} >
             <h2 className='mx-auto'>Donate</h2>
               <Grid columns={2} stackable>

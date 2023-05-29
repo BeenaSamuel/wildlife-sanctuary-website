@@ -1,15 +1,19 @@
 .custom-datatable {
-  background-color: #050505; /* Set the background color */
+  background-color: #0f2a06; /* Set the background color */
 }
 
 .custom-datatable .p-datatable-thead th {
   background-color:#484343b8; /* Set the header background color */
   color: #ffffff; /* Set the header text color */
+  font-family: 'Aoboshi One', serif;
+    font-size: 21px;
 }
 
 .custom-datatable .p-datatable-tbody td {
-  background-color:#484343b8; /* Set the body cell background color */
-  color: #ffffff; /* Set the body cell text color */
+  background-color:#ffffffb8; /* Set the body cell background color */
+  color: #000000; /* Set the body cell text color */
+  font-family: 'Roboto Slab', serif;
+  font-size: 18;
 }
 
 .custom-datatable .p-paginator {

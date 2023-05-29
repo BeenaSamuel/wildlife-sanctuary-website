@@ -30,10 +30,16 @@
     display: inherit ;
 }
 
-.banner-container:has(.home){
-    flex-direction: column ;
+.banner-container:has(.donate){
+    display: grid ;
 }
 
+.banner-container:has(.home){
+    display: block ;
+}
+.banner-container:has(.ticketview){
+    display: inline-block ;
+}
 
 
 
@@ -61,3 +67,22 @@ footer{
     color: white;
     background-color: black;
 }
+
+.titlefont{
+    font-family: 'Roboto Slab', serif;
+    font-size: 48px;
+    
+  }
+  
+  .subtt{
+    font-family: 'Lobster', cursive;
+    color: rgb(255, 255, 255);
+    font-size: 50;
+  }
+
+ button{
+    background-color: rgb(5, 43, 5) !important;
+    color: aliceblue !important;
+    border-color: antiquewhite !important;
+   
+ }

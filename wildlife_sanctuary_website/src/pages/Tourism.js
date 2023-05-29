@@ -3,6 +3,9 @@ import { Form, Button, ListGroup } from 'react-bootstrap';
 import axios from "axios";
 import ViewTicket from './ViewTicket';
 import './Home.css';
+import {Link} from "react-router-dom";
+import { Segment } from 'semantic-ui-react';
+
 
 
 
@@ -44,6 +47,7 @@ const Tourism = (props) => {
 
   else{
   return (
+    <Segment inverted>
     <Form onSubmit={handleFormSubmit} className='w-50 mx-auto donor'>
       <h1> Book ticket</h1>
       <Form.Group controlId="touristId">
@@ -113,10 +117,12 @@ const Tourism = (props) => {
       )}
       <br></br>
       <br></br>
-      <Button variant="success" type="submit">
-        Submit
+      <Button variant="success" type="submit" className='success'>
+        Submit/View details
       </Button>
+      
     </Form>
+    </Segment>
   );
 };
 }

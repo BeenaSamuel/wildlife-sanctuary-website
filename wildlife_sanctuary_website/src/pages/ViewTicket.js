@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Input , Segment,Table, Divider} from 'semantic-ui-react'
+import './Home.css'
 
 function ViewTicket(props) {
     const [ticketData, setTicketData] = useState([]);
@@ -29,38 +31,52 @@ const [touristData, setTouristData] = useState({});
       
   
       return (
-        <div className="ticketdetails">
-          <center>
-            <div className="con">
-              <h2>Tourist Details</h2>
-              <p>ID: {touristData.id}</p>
-              <p>Name: {touristData.name}</p>
-              <p>Amount: {touristData.amount}</p>
-              <p>Contact: {touristData.contact}</p>
-              <p>Preferred Language: {touristData.prefferedlang}</p>
-              <hr />
-              <h2>Ticket Details</h2>
-              <table className="table table-bordered s">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Type</th>
-                    <th>Ride</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ticketData.map((ticket) => (
-                    <tr key={ticket.id}>
-                      <td>{ticket.id}</td>
-                      <td>{ticket.type}</td>
-                      <td>{ticket.ride}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </center>
-        </div>
+         
+              <Segment className="ticketview">
+                <Segment padded = 'very' >
+              <Segment.Group inverted color='black'>
+              <Segment inverted>
+              <h2 >Tourist Details</h2>
+              </Segment>
+              <Segment inverted>
+              <div class="ui  input  "><input className='text-center' type="text" value = {touristData.id} disabled="" tabindex="-1"/></div>
+              </Segment>
+              <Segment inverted>
+              <div class="ui  input"><input className='text-center' type="text" value = {touristData.name} disabled="" tabindex="-1"/></div>
+              </Segment>
+              <Segment inverted > 
+              <div class="ui input"><input className='text-center' type="text" value = {touristData.amount} disabled="" tabindex="-1"/></div>
+              </Segment>
+              <Segment inverted>
+              <div class="ui input"><input className='text-center'type="text" value = {touristData.contact} disabled="" tabindex="-1"/></div>
+              </Segment>
+              <Segment inverted  >
+              <div class="ui  input"><input className='text-center' type="text" value = {touristData.prefferedlang} disabled="" tabindex="-1"/></div>
+              </Segment>
+              </Segment.Group>
+              </Segment>
+             
+              <Table inverted celled  selectable>
+  <Table.Header>
+    <Table.Row>
+      <Table.HeaderCell>ID</Table.HeaderCell>
+      <Table.HeaderCell>Type</Table.HeaderCell>
+      <Table.HeaderCell>Ride</Table.HeaderCell>
+    </Table.Row>
+  </Table.Header>
+
+  <Table.Body>
+    {ticketData.map((ticket) => (
+      <Table.Row key={ticket.id}>
+        <Table.Cell>{ticket.id}</Table.Cell>
+        <Table.Cell>{ticket.type}</Table.Cell>
+        <Table.Cell>{ticket.ride}</Table.Cell>
+      </Table.Row>
+    ))}
+  </Table.Body>
+</Table>
+</Segment>       
+       
       );
       
   }

@@ -1,11 +1,11 @@
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home"
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Whywe from "./pages/Whywe";
 import Donate from "./pages/Donate";
 import Instructions from "./pages/Instructions";
-import Feedback from "./pages/Feedback";
+
 import Tourism from "./pages/Tourism";
 import Gallery from "./pages/Gallery";
 import ViewDonors from "./pages/View Donors";
@@ -45,7 +45,7 @@ function App() {
         <Routes>
         
           <Route path="/" element={<HomepageLayout />} />
-          <Route path="/Feedback" element={<Feedback />} />
+          
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Donate" element={<Donate />} />
           <Route path="/Instructions" element={<Instructions />} />
