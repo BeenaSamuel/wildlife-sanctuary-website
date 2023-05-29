@@ -22,8 +22,11 @@ class Donate extends Component {
     this.setState({ donorname: event.target.value });
   };
 
-  handleDonationSourceChange = (event) => {
-    this.setState({ donationtype: event.target.value });
+  // handleDonationSourceChange = (event) => {
+  //   this.setState({ donationtype: event.target.value });
+  // };
+  handleDonationSourceChange = (event, data) => {
+    this.setState({ donationtype: data.value });
   };
 
   handleDonationAmountChange = (event) => {

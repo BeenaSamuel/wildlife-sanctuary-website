@@ -16,3 +16,4 @@ class DonationApplicationTests {
 		DonationApplication.main(new String[] {});
 	}
 }
+
