@@ -95,7 +95,7 @@ class Donate extends Component {
               <br></br>
               <br></br>
               <Button primary type="submit" className='mx-auto'>
-                Register
+                Donate
               </Button>
             </Form>
           </Segment>

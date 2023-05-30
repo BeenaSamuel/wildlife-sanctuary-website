@@ -19,6 +19,7 @@ const Tourism = (props) => {
  
   const [ticketview , setTicketview] = useState(false);
   const [ridecheck, setRideCheck] = useState(false);
+  const [fordate, setFordate] = useState(false);
   const rides = [
     { id: 1, name: 'Ridetype 1', price: 10 },
     { id: 2, name: 'Ridetype 2', price: 15 },
@@ -30,10 +31,9 @@ const Tourism = (props) => {
     
     try {
       for (let i = 0; i < tickno; i++) {
-        await axios.post("http://localhost:8082/api/tickets", { type, ride, touristId });
+        await axios.post("http://localhost:8082/api/tickets", { type, ride,fordate, touristId });
       }
       
-      alert("Tickets have been generated successfully");
       setTicketview(true);
       
     } catch (error) {
@@ -82,6 +82,15 @@ const Tourism = (props) => {
           <option value="half">Less than 5 years (Half ticket)</option>
           <option value="full">5 years and above (Full ticket)</option>
         </Form.Control>
+      </Form.Group>
+      <br></br>
+      <Form.Group controlId="fordate">
+        <Form.Label>Date:</Form.Label>
+        <Form.Control
+          type="date"
+          value={fordate}
+          onChange={(e) => setFordate(e.target.value)}
+        />
       </Form.Group>
       <br></br>
       <Form.Group controlId="ridecheck">

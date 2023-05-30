@@ -61,6 +61,7 @@ const [touristData, setTouristData] = useState({});
     <Table.Row>
       <Table.HeaderCell>ID</Table.HeaderCell>
       <Table.HeaderCell>Type</Table.HeaderCell>
+      <Table.HeaderCell>Date</Table.HeaderCell>
       <Table.HeaderCell>Ride</Table.HeaderCell>
     </Table.Row>
   </Table.Header>
@@ -70,6 +71,7 @@ const [touristData, setTouristData] = useState({});
       <Table.Row key={ticket.id}>
         <Table.Cell>{ticket.id}</Table.Cell>
         <Table.Cell>{ticket.type}</Table.Cell>
+        <Table.Cell>{ticket.fordate}</Table.Cell>
         <Table.Cell>{ticket.ride}</Table.Cell>
       </Table.Row>
     ))}

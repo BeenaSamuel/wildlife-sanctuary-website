@@ -91,7 +91,7 @@ class Login extends Component {
       </Header>
       <Form size='large' onSubmit={this.handleSubmit}>
         <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={this.state.username}
+          <Form.Input fluid icon='user' iconPosition='left' placeholder='Name' value={this.state.username}
               onChange={this.handleUsernameChange}/>
           <Form.Input
             fluid
