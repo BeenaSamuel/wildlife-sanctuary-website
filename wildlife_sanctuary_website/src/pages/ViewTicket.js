@@ -63,22 +63,22 @@ function ViewTicket(props) {
   const onGlobalFilterChange = (e) => {
     const { value } = e.target;
     setGlobalFilterValue(value);
-
+  
     if (value) {
       const filteredResult = ticketData.filter(
         (item) =>
-          item.id.toLowerCase().includes(value.toLowerCase()) ||
+          (item.id && typeof item.id === 'string' && item.id.toLowerCase().includes(value.toLowerCase())) ||
           item.type.toLowerCase().includes(value.toLowerCase()) ||
           item.fordate.toLowerCase().includes(value.toLowerCase()) ||
           item.ride.toLowerCase().includes(value.toLowerCase())
       );
-
+  
       setTicketData(filteredResult);
     } else {
-      // Reset the ticket data to original state when the filter value is empty
       loadDetails();
     }
   };
+  
 
   const renderHeader = () => {
     return (
