@@ -58,6 +58,7 @@ const Tourism = (props) => {
   value={touristId}
   onChange={(e) => setTouristId(e.target.value)}
   disabled // Add the disabled attribute
+  
 />
 
       </Form.Group>
@@ -68,6 +69,7 @@ const Tourism = (props) => {
           type="number"
           value={ticketnos}
           onChange={(e) => setTicketnos(e.target.value)}
+         
         />
       </Form.Group>
       <br></br>
@@ -79,8 +81,9 @@ const Tourism = (props) => {
           onChange={(e) => setType(e.target.value)}
         >
           <option value="">Select ticket type</option>
-          <option value="half">Less than 5 years (Half ticket)</option>
-          <option value="full">5 years and above (Full ticket)</option>
+          <option value="half">Less than 5 years (Half ticket Rs.10)</option>
+          <option value="full">5 years and above (Full ticket Rs.20)</option>
+         
         </Form.Control>
       </Form.Group>
       <br></br>
@@ -90,6 +93,7 @@ const Tourism = (props) => {
           type="date"
           value={fordate}
           onChange={(e) => setFordate(e.target.value)}
+       
         />
       </Form.Group>
       <br></br>
@@ -102,6 +106,7 @@ const Tourism = (props) => {
         >
           <option value={false}>No</option>
           <option value={true}>Yes</option>
+        
         </Form.Control>
       </Form.Group>
       <br></br>

@@ -46,6 +46,7 @@ public class TouristController {
 //        return ResponseEntity.ok(tourist);
 //    }
     
+    //Login
     @GetMapping
     public ResponseEntity<List<Tourist>> getTouristByNameAndPassword(@RequestParam("name") String name, @RequestParam("password") String password) {
         Tourist tourist = touristService.getTouristByNameAndPassword(name, password);
