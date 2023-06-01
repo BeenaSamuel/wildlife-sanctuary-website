@@ -1,12 +1,17 @@
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { InputText } from 'primereact/inputtext';
+import { Tooltip } from 'primereact/tooltip';
+import { Button } from 'primereact/button'; // Import the Button component
+import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Input , Segment, Table, Divider, Message } from 'semantic-ui-react'
-import './Home.css'
+import './Home.css';
 
 function ViewTicket(props) {
   const [ticketData, setTicketData] = useState([]);
   const [touristData, setTouristData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
+  const [globalFilterValue, setGlobalFilterValue] = useState(''); // Add globalFilterValue state
 
   useEffect(() => {
     loadDetails();
@@ -49,83 +54,167 @@ function ViewTicket(props) {
       } else if (ticket.ride === "Ridetype 3") {
         totalPrice += 20;
       }
-      
     }
 
     return totalPrice;
   };
 
+  const onGlobalFilterChange = (e) => {
+    const { value } = e.target;
+    setGlobalFilterValue(value);
+
+    if (value) {
+      const filteredResult = ticketData.filter(
+        (item) =>
+          item.id.toLowerCase().includes(value.toLowerCase()) ||
+          item.type.toLowerCase().includes(value.toLowerCase()) ||
+          item.fordate.toLowerCase().includes(value.toLowerCase()) ||
+          item.ride.toLowerCase().includes(value.toLowerCase())
+      );
+
+      setTicketData(filteredResult);
+    } else {
+      // Reset the ticket data to original state when the filter value is empty
+      loadDetails();
+    }
+  };
+
+  const renderHeader = () => {
+    return (
+      <div className="flex justify-content-end home">
+        <span className="p-input-icon-left">
+          <i className="pi pi-search" />
+          <InputText
+            value={globalFilterValue}
+            onChange={onGlobalFilterChange}
+            placeholder="Keyword Search"
+          />
+        </span>
+      </div>
+    );
+  };
+
+  const handleDelete = async (ticketId) => {
+    try {
+      // Perform the delete request using the ticketId
+      await axios.delete(`http://localhost:8082/api/tickets/${ticketId}`);
+  
+      // Reload the ticket details after successful deletion
+      loadDetails();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  
+
+  const header = renderHeader();
+
   return (
-    <Segment className="ticketview">
-      <Segment padded="very">
-        <Segment.Group inverted color="black">
-          <Segment inverted>
-            <h2>Tourist Details</h2>
-          </Segment>
-          <Segment inverted>
-            <label className="mx-3">ID: </label>
-            <div class="ui input">
-              <input className='text-center' type="text" value={touristData.id} disabled="" tabindex="-1" />
-            </div>
-          </Segment>
-          <Segment inverted>
-            <label className="mx-3">Name: </label>
-            <div class="ui input">
-              <input className='text-center' type="text" value={touristData.name} disabled="" tabindex="-1" />
-            </div>
-          </Segment>
-          <Segment inverted>
-            <label className="mx-3">Amount: </label>
-            <div class="ui input">
-              <input className='text-center' type="text" value={touristData.amount} disabled="" tabindex="-1" />
-            </div>
-          </Segment>
-          <Segment inverted>
-            <label className="mx-3">Contact: </label>
-            <div class="ui input">
-              <input className='text-center' type="text" value={touristData.contact} disabled="" tabindex="-1" />
-            </div>
-          </Segment>
-          <Segment inverted>
-            <label className="mx-3">Language: </label>
-            <div class="ui input">
-              <input className='text-center' type="text" value={touristData.prefferedlang} disabled="" tabindex="-1" />
-            </div>
-          </Segment>
-        </Segment.Group>
-      </Segment>
+    <div className="ticketview">
+      <div className="p-card p-p-3">
+        <div className="p-mb-2">
+          <h2>Tourist Details</h2>
+        </div>
+        <div className="p-mb-2">
+          <span>ID:</span>
+          <div className="p-inputgroup">
+            <InputText
+              value={touristData.id}
+              disabled
+              tabIndex="-1"
+              className="text-center"
+            />
+          </div>
+        </div>
+        <div className="p-mb-2">
+          <span>Name:</span>
+          <div className="p-inputgroup">
+            <InputText
+              value={touristData.name}
+              disabled
+              tabIndex="-1"
+              className="text-center"
+            />
+          </div>
+        </div>
+        <div className="p-mb-2">
+          <span>Amount:</span>
+          <div className="p-inputgroup">
+            <InputText
+              value={touristData.amount}
+              disabled
+              tabIndex="-1"
+              className="text-center"
+            />
+          </div>
+        </div>
+        <div className="p-mb-2">
+          <span>Contact:</span>
+          <div className="p-inputgroup">
+            <InputText
+              value={touristData.contact}
+              disabled
+              tabIndex="-1"
+              className="text-center"
+            />
+          </div>
+        </div>
+        <div className="p-mb-2">
+          <span>Language:</span>
+          <div className="p-inputgroup">
+            <InputText
+              value={touristData.prefferedlang}
+              disabled
+              tabIndex="-1"
+              className="text-center"
+            />
+          </div>
+        </div>
+      </div>
 
-      <Table inverted celled selectable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>ID</Table.HeaderCell>
-            <Table.HeaderCell>Type</Table.HeaderCell>
-            <Table.HeaderCell>Date</Table.HeaderCell>
-            <Table.HeaderCell>Ride</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+      <DataTable
+        value={ticketData}
+        paginator
+        rows={10}
+        dataKey="id"
+        header={header}
+        emptyMessage="No tickets found."
+        className="custom-datatable"
+      >
+        <Column field="id" header="ID" sortable filter />
+        <Column field="type" header="Type" sortable filter />
+        <Column field="fordate" header="Date" sortable filter />
+        <Column field="ride" header="Ride" sortable filter />
 
-        <Table.Body>
-          {ticketData.map((ticket) => (
-            <Table.Row key={ticket.id}>
-              <Table.Cell>{ticket.id}</Table.Cell>
-              <Table.Cell>{ticket.type}</Table.Cell>
-              <Table.Cell>{ticket.fordate}</Table.Cell>
-              <Table.Cell>{ticket.ride}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
+        <Column
+          header="Actions"
+          body={(rowData) => (
+            <div className="p-d-flex p-justify-center">
+              <Tooltip target=".action-button" content="Delete" position="top" />
+              <Button
+                icon="pi pi-trash"
+                className="p-button-rounded p-button-danger action-button"
+                onClick={() => handleDelete(rowData.id)}
+              />
+            </div>
+          )}
+          style={{ textAlign: 'center', width: '8em' }}
+        />
+      </DataTable>
 
-      <Segment>
-        <Message positive>
-          <Message.Header>Total Price </Message.Header>
-          <p>
-             <b>Rs.{totalPrice}</b>
-          </p>
-        </Message>
-      </Segment>
-    </Segment>
+      <div className="p-card p-p-3">
+        <div className="p-mb-2">
+          <span>Total Price:</span>
+          <div className="p-inputgroup">
+            <InputText
+              value={`Rs. ${totalPrice}`}
+              disabled
+              className="text-center"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

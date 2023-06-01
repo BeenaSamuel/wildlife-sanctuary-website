@@ -38,6 +38,7 @@ class Register extends Component {
           })
           .catch((ex) => {
             console.log(ex);
+            alert("Username already taken");
           });
       }
     } else {

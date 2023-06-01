@@ -48,7 +48,7 @@ const Tourism = (props) => {
   else{
   return (
     <Segment inverted>
-    <Form onSubmit={handleFormSubmit} className='w-50 mx-auto donor'>
+    <Form onSubmit={handleFormSubmit} className='w-25 mx-auto donor'>
       <h1> Book ticket</h1>
       <Form.Group controlId="touristId">
         <Form.Label >Tourist ID:</Form.Label>
