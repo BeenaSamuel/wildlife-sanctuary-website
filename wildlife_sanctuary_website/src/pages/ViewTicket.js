@@ -6,6 +6,7 @@ import { Button } from 'primereact/button'; // Import the Button component
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import './Home.css';
+import { Segment } from 'semantic-ui-react';
 
 function ViewTicket(props) {
   const [ticketData, setTicketData] = useState([]);
@@ -110,68 +111,72 @@ function ViewTicket(props) {
   const header = renderHeader();
 
   return (
+   
     <div className="ticketview">
-      <div className="p-card p-p-3">
+      <Segment inverted>       
+      <div  className="p-card p-p-3">
+      <br></br>
         <div className="p-mb-2">
-          <h2>Tourist Details</h2>
+          <h2 className='my-2 tabletitles'>Tourist Details</h2>
         </div>
         <div className="p-mb-2">
-          <span>ID:</span>
-          <div className="p-inputgroup">
+          <span className='tableheaders'> ID:</span>
+          <div className="p-inputgroup w-25 mx-auto">
             <InputText
               value={touristData.id}
-              disabled
+              readOnly
               tabIndex="-1"
-              className="text-center"
+              className="text-center "
             />
           </div>
         </div>
         <div className="p-mb-2">
-          <span>Name:</span>
-          <div className="p-inputgroup">
+          <span className='tableheaders'>Name:</span>
+          <div className="p-inputgroup w-25 mx-auto">
             <InputText
               value={touristData.name}
-              disabled
+              readOnly
               tabIndex="-1"
-              className="text-center"
+              className="text-center tablebody"
             />
           </div>
         </div>
         <div className="p-mb-2">
-          <span>Amount:</span>
-          <div className="p-inputgroup">
+          <span className='tableheaders'>Amount:</span>
+          <div className="p-inputgroup w-25 mx-auto">
             <InputText
               value={touristData.amount}
-              disabled
+              readOnly
               tabIndex="-1"
-              className="text-center"
+              className="text-center tablebody"
             />
           </div>
         </div>
         <div className="p-mb-2">
-          <span>Contact:</span>
-          <div className="p-inputgroup">
+          <span className='tableheaders'>Contact:</span>
+          <div className="p-inputgroup w-25 mx-auto">
             <InputText
               value={touristData.contact}
-              disabled
+              readOnly
               tabIndex="-1"
-              className="text-center"
+              className="text-center tablebody"
             />
           </div>
         </div>
         <div className="p-mb-2">
-          <span>Language:</span>
-          <div className="p-inputgroup">
+          <span className='tableheaders'>Language:</span>
+          <div className="p-inputgroup w-25 mx-auto">
             <InputText
               value={touristData.prefferedlang}
-              disabled
+              readOnly
               tabIndex="-1"
-              className="text-center"
+              className="text-center tablebody"
             />
           </div>
+          <br></br>
         </div>
       </div>
-
+      </Segment>
       <DataTable
         value={ticketData}
         paginator

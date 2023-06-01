@@ -86,3 +86,19 @@ footer{
     border-color: antiquewhite !important;
    
  }
+
+ .tabletitles{
+
+    font-family: 'Playfair Display', serif;
+    font-size: 40;
+ }
+
+ .tableheaders{
+    font-family: 'Aoboshi One', serif;
+    font-size: 21px;
+ }
+
+ .tablebody{
+    font-family: 'Roboto Slab', serif;
+  font-size: 18;
+ }
