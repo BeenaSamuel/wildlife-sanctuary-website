@@ -9,7 +9,6 @@ class Donate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
       donorname: '',
       donationtype: 'organization',
       donationamount: '',
@@ -62,7 +61,7 @@ class Donate extends Component {
                 <Grid.Row className='mx-auto'>
                   <Grid.Column width={8} className='mx-auto'>
                     <Form.Field>
-                      <label>Donator Name:</label>
+                      <label>Donor Name:</label>
                       <input type="text" value={this.state.donorname} onChange={this.handleDonorNameChange} />
                     </Form.Field>
                   </Grid.Column>
@@ -82,7 +81,7 @@ class Donate extends Component {
                       <label>Type of donation :</label>
                       <Dropdown
                         placeholder="Select Donation source"
-                        fluid
+                       
                         selection
                         options={languageOptions}
                         value={this.state.donationtype}

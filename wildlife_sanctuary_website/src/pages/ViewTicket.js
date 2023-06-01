@@ -7,12 +7,17 @@ import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import './Home.css';
 import { Segment } from 'semantic-ui-react';
+import { Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 
 function ViewTicket(props) {
+  
   const [ticketData, setTicketData] = useState([]);
   const [touristData, setTouristData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const [globalFilterValue, setGlobalFilterValue] = useState(''); // Add globalFilterValue state
+  const [editData, setEditData] = useState(null);
 
   useEffect(() => {
     loadDetails();
@@ -106,10 +111,33 @@ function ViewTicket(props) {
       console.error("Error:", error);
     }
   };
+  const handleEdit = (rowData) => {
+    setEditData(rowData); // Set the editData state with the rowData
+  };
+
+  const handleEditSubmit = async (editedData) => {
+    try {
+      await axios.put(`http://localhost:8082/api/tickets/${editedData.id}`, editedData);
+      setEditData(null); // Clear the editData state
+      loadDetails();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   
 
   const header = renderHeader();
 
+  if (editData) {
+    // Render EditView if editData exists
+    return (
+      <EditView
+        editData={editData}
+        handleEditSubmit={handleEditSubmit}
+        handleCancel={() => setEditData(null)}
+      />
+    );
+  }
   return (
    
     <div className="ticketview">
@@ -192,19 +220,25 @@ function ViewTicket(props) {
         <Column field="ride" header="Ride" sortable filter />
 
         <Column
-          header="Actions"
-          body={(rowData) => (
-            <div className="p-d-flex p-justify-center">
-              <Tooltip target=".action-button" content="Delete" position="top" />
-              <Button
-                icon="pi pi-trash"
-                className="p-button-rounded p-button-danger action-button"
-                onClick={() => handleDelete(rowData.id)}
-              />
-            </div>
-          )}
-          style={{ textAlign: 'center', width: '8em' }}
-        />
+  header="Actions"
+  body={(rowData) => (
+    <div className="p-d-flex p-justify-center">
+      <Tooltip target=".action-button" content="Edit" position="top" />
+      <Button
+                  icon="pi pi-pencil"
+                  className="p-button-rounded p-button-info action-button"
+                  onClick={() => handleEdit(rowData)}
+                />
+      <Tooltip target=".delete-button" content="Delete" position="top" />
+      <Button
+        icon="pi pi-trash"
+        className="p-button-rounded p-button-danger action-button delete-button"
+        onClick={() => handleDelete(rowData.id)}
+      />
+    </div>
+  )}
+  style={{ textAlign: 'center', width: '10em' }}
+/>
       </DataTable>
 
       <div className="p-card p-p-3">
@@ -219,6 +253,56 @@ function ViewTicket(props) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+function EditView({ editData, handleEditSubmit, handleCancel }) {
+  const [type, setType] = useState(editData.type);
+  const [ride, setRide] = useState(editData.ride);
+  const [fordate, setFordate] = useState(editData.fordate);
+
+  const handleSubmit = () => {
+    const editedData = { ...editData, type, ride, fordate };
+    handleEditSubmit(editedData);
+  };
+
+  return (
+    <div className="edit-view">
+      <Form>
+        <Form.Group controlId="type">
+          <Form.Label>Type:</Form.Label>
+          <Form.Control
+            type="text"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="ride">
+          <Form.Label>Ride:</Form.Label>
+          <Form.Control
+            type="text"
+            value={ride}
+            onChange={(e) => setRide(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="fordate">
+          <Form.Label>Date:</Form.Label>
+          <Form.Control
+            type="date"
+            value={fordate}
+            onChange={(e) => setFordate(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="primary" onClick={handleSubmit}>
+          Submit
+        </Button>
+        <Button variant="secondary" onClick={handleCancel}>
+          Cancel
+        </Button>
+      </Form>
     </div>
   );
 }

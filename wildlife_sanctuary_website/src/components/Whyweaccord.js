@@ -17,11 +17,12 @@ export default class WhyweAccord extends Component {
 
     return (
       <Segment inverted className=' text-justify'>
-        <Accordion inverted>
+        <Accordion inverted >
           <Accordion.Title
             active={activeIndex === 0}
             index={0}
             onClick={this.handleClick}
+             
           >
             <Icon name='dropdown' />
             Why should we protect the wildlife?

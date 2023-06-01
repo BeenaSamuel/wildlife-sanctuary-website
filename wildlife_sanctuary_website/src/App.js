@@ -5,12 +5,14 @@ import Register from "./pages/Register";
 import Whywe from "./pages/Whywe";
 import Donate from "./pages/Donate";
 import Instructions from "./pages/Instructions";
-
+import { EditView } from "./pages/EditTicket";
 import Tourism from "./pages/Tourism";
 import Gallery from "./pages/Gallery";
 import ViewDonors from "./pages/View Donors";
 import HomepageLayout from "./pages/Homepage";
 import { Route, Routes } from "react-router-dom"
+
+
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
@@ -54,6 +56,12 @@ function App() {
           <Route path="/Homepage" element={<HomepageLayout />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/View Donors" element={<ViewDonors />} />
+          <Route
+  path="/edit-ticket/:touristid/:ticketid/:type/:ride/:date"
+  element={<EditView />}
+/>
+
+          
           <Route path="/Login" element={<Login onSignIn={handleSignIn} />} />
           
         </Routes>
