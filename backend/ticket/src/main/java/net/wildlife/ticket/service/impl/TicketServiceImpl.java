@@ -1,5 +1,8 @@
 package net.wildlife.ticket.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.http.ResponseEntity;
@@ -31,15 +34,30 @@ public class TicketServiceImpl implements TicketService {
 	
   
 
-    private TicketDto mapToTicket(Ticket ticket){
-        TicketDto ticketDto = new TicketDto();
-        ticketDto.setId(ticket.getId());
-        ticketDto.setType(ticket.getType());
-        ticketDto.setRide(ticket.getRide());
- 
-        return ticketDto;
-    }
+//    private TicketDto mapToTicket(Ticket ticket){
+//        TicketDto ticketDto = new TicketDto();
+//        ticketDto.setId(ticket.getId());
+//        ticketDto.setType(ticket.getType());
+//        ticketDto.setRide(ticket.getRide());
+// 
+//        return ticketDto;
+//    }
+    
+    private List<TicketDto> mapTicketsFromTourist(Long touristId) {
+        List<Ticket> tickets = ticketRepository.findAllByTouristId(touristId);
+        List<TicketDto> ticketDtos = new ArrayList<>();
 
+        for (Ticket ticket : tickets) {
+            TicketDto ticketDto = new TicketDto();
+            ticketDto.setId(ticket.getId());
+            ticketDto.setType(ticket.getType());
+            ticketDto.setRide(ticket.getRide());
+            ticketDto.setFordate(ticket.getFordate());
+            ticketDtos.add(ticketDto);
+        }
+
+        return ticketDtos;
+    }
 
 	@Override
 	public Ticket saveTicket(Ticket ticket) {
@@ -50,23 +68,65 @@ public class TicketServiceImpl implements TicketService {
 
 
 
+
+//	@Override
+//	public ResponseDto getTicket(Long ticketId) {
+//		 ResponseDto responseDto = new ResponseDto();
+//	        Ticket ticket = ticketRepository.findById(ticketId).get();
+//	        TicketDto ticketDto = mapToTicket(ticket);
+//
+//	        ResponseEntity<TouristDto> responseEntity = restTemplate
+//	                .getForEntity("http://localhost:8081/api/tourists/" + ticket.getTouristId(),
+//	                TouristDto.class);
+//
+//	        TouristDto touristDto = responseEntity.getBody();
+//
+//	        
+//
+//	        responseDto.setTickets(ticketDto);
+//	        responseDto.setTourist(touristDto);
+//
+//	        return responseDto;
+//	}
+
+
+
+
 	@Override
-	public ResponseDto getTicket(Long ticketId) {
-		 ResponseDto responseDto = new ResponseDto();
-	        Ticket ticket = ticketRepository.findById(ticketId).get();
-	        TicketDto ticketDto = mapToTicket(ticket);
+	public ResponseDto getTicketsForTourist(Long touristId) {
+	    ResponseDto responseDto = new ResponseDto();
 
-	        ResponseEntity<TouristDto> responseEntity = restTemplate
-	                .getForEntity("http://localhost:8081/api/tourists/" + ticket.getTouristId(),
-	                TouristDto.class);
+	    List<TicketDto> ticketDtos = mapTicketsFromTourist(touristId);
 
-	        TouristDto touristDto = responseEntity.getBody();
+	    ResponseEntity<TouristDto> responseEntity = restTemplate.getForEntity(
+	            "http://localhost:8081/api/tourists/" + touristId,
+	            TouristDto.class
+	    );
 
-	        System.out.println(responseEntity.getStatusCode());
+	    TouristDto touristDto = responseEntity.getBody();
 
-	        responseDto.setTicket(ticketDto);
-	        responseDto.setTourist(touristDto);
+	    responseDto.setTickets(ticketDtos);
+	    responseDto.setTourist(touristDto);
 
-	        return responseDto;
+	    return responseDto;
+	}
+
+
+
+
+	@Override
+	public void deleteTicket(Long ticketId) {
+		// TODO Auto-generated method stub
+		ticketRepository.deleteById(ticketId);
+		
+	}
+
+
+
+
+	@Override
+	public Ticket updateTicket(Ticket ticket) {
+		// TODO Auto-generated method stub
+		return ticketRepository.save(ticket);
 	}
 }

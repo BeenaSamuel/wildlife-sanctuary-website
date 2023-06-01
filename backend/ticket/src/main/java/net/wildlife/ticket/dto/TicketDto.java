@@ -1,12 +1,21 @@
 package net.wildlife.ticket.dto;
 
-
-
+import java.sql.Date;
 
 public class TicketDto {
 	 private Long id;
 	    private String type;
 	    private String ride;
+	    private Date fordate;
+	    public TicketDto(Long id, String type, String ride, Date fordate, Long touristId) {
+			super();
+			this.id = id;
+			this.type = type;
+			this.ride = ride;
+			this.fordate = fordate;
+			this.touristId = touristId;
+		}
+		private Long touristId;
 		public Long getId() {
 			return id;
 		}
@@ -20,12 +29,13 @@ public class TicketDto {
 			this.type = type;
 		}
 		
-		public TicketDto(Long id, String type, String ride) {
-			super();
-			this.id = id;
-			this.type = type;
-			this.ride = ride;
+		public Long getTouristId() {
+			return touristId;
 		}
+		public void setTouristId(Long touristId) {
+			this.touristId = touristId;
+		}
+		
 		public String getRide() {
 			return ride;
 		}
@@ -35,6 +45,13 @@ public class TicketDto {
 		public TicketDto() {
 			
 		}
+		public Date getFordate() {
+			return fordate;
+		}
+		public void setFordate(Date fordate) {
+			this.fordate = fordate;
+		}
+		
 	   
 	   
 }

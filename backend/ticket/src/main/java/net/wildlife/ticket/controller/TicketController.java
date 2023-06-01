@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/tickets")
-
+@CrossOrigin(origins = "http://localhost:3000")
 public class TicketController {
 
     private TicketService ticketService;
@@ -28,9 +28,27 @@ public class TicketController {
         return new ResponseEntity<>(savedTicket, HttpStatus.CREATED);
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<ResponseDto> getTicket(@PathVariable("id") Long ticketId){
-        ResponseDto responseDto = ticketService.getTicket(ticketId);
+//    @GetMapping("{id}")
+//    public ResponseEntity<ResponseDto> getTicket(@PathVariable("id") Long ticketId){
+//        ResponseDto responseDto = ticketService.getTicket(ticketId);
+//        return ResponseEntity.ok(responseDto);
+//    }
+	
+    @PutMapping("{id}")
+    public ResponseEntity<Ticket> updateTicket(@PathVariable("id") Long ticketId, @RequestBody Ticket ticket){
+        Ticket updatedTicket = ticketService.updateTicket(ticket);
+        return ResponseEntity.ok(updatedTicket);
+    }
+    
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteTicket(@PathVariable("id") Long ticketId){
+        ticketService.deleteTicket(ticketId);
+        return ResponseEntity.noContent().build();
+    }
+    
+    @GetMapping
+    public ResponseEntity<ResponseDto> getTicketsForTourist(@RequestParam("touristId") Long touristId) {
+        ResponseDto responseDto = ticketService.getTicketsForTourist(touristId);
         return ResponseEntity.ok(responseDto);
     }
 }

@@ -1,6 +1,10 @@
 package net.wildlife.ticket.entity;
 
+import java.sql.Date;
+
 import javax.persistence.*;
+
+import net.wildlife.ticket.dto.TicketDto;
 
 @Entity
 @Table(name = "tickets")
@@ -12,8 +16,17 @@ public class Ticket {
     
     private String type;
     private String ride;
+    private Date fordate;
    
-    private String touristId;
+    public Date getFordate() {
+		return fordate;
+	}
+
+	public void setFordate(Date fordate) {
+		this.fordate = fordate;
+	}
+
+	private Long touristId;
 
 	public Long getId() {
 		return id;
@@ -31,21 +44,24 @@ public class Ticket {
 		this.type = type;
 	}
 
-	public String getTouristId() {
+	public Long getTouristId() {
 		return touristId;
 	}
 
-	public void setTouristId(String touristId) {
+	public void setTouristId(Long touristId) {
 		this.touristId = touristId;
 	}
 
 	
 
-	public Ticket(Long id, String type, String ride, String touristId) {
+	
+
+	public Ticket(Long id, String type, String ride, Date fordate, Long touristId) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.ride = ride;
+		this.fordate = fordate;
 		this.touristId = touristId;
 	}
 
@@ -59,6 +75,11 @@ public class Ticket {
 
 	public Ticket() {
 		
+	}
+
+	public TicketDto get() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
     
