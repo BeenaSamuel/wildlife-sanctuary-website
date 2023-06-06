@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Button, Form, Segment, Grid, Dropdown } from 'semantic-ui-react';
 import axios from "axios";
-import './Register.css'
+import '../Styles/Register.css'
 
 
 

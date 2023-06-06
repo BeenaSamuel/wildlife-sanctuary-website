@@ -1,8 +1,9 @@
-// src/components/Home/Home.js
 
 // import CSS
-import './Home.css';
-import { Divider } from 'semantic-ui-react';
+import '../Styles/Home.css';
+
+
+
 import React from 'react';
 const HomepageLayout = (props) => {
     const homeStyles = {

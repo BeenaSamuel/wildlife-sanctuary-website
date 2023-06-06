@@ -2,13 +2,11 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { Tooltip } from 'primereact/tooltip';
-import { Button } from 'primereact/button'; // Import the Button component
+import { Button } from 'primereact/button'; 
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import './Home.css';
+import '../Styles/Home.css';
 import { Segment } from 'semantic-ui-react';
-import { Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import { EditView } from './EditTicket';
 
 

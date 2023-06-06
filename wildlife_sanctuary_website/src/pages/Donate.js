@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import axios from "axios";
 
-import { Container, Button, Form, Segment, Grid, Dropdown } from 'semantic-ui-react';
+import { Button, Form, Segment, Grid, Dropdown } from 'semantic-ui-react';
 
 
 class Donate extends Component {

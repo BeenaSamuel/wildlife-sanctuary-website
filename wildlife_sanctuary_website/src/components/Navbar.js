@@ -1,13 +1,10 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-
-
 
 export default function Navbar({ isSignedIn }) {
   return (
     <nav className="nav">
        <Link className="navbar-brand" href="#section1"  to={'/'}>
-              <img src="./tiger3.jpg"></img>
+              <img src="./tiger3.jpg" alt="tiger logo"></img>
               <Link to="/" className="site-title">
         Wildicare
       </Link>
@@ -25,9 +22,7 @@ export default function Navbar({ isSignedIn }) {
          <CustomLink to="/Gallery">Gallery</CustomLink>
         <CustomLink to="/Donate">Donate</CustomLink>
         {!isSignedIn && <CustomLink to="/Login">Sign in</CustomLink>}
-        {/* <Button color='teal' fluid size='large' >
-            Logout
-          </Button> */}
+       
         
       </ul>
 

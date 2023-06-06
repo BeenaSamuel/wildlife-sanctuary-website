@@ -3,7 +3,7 @@ import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import './ViewDonors.css'
+import '../Styles/ViewDonors.css'
 
 function ViewDonors() {
   const [data, setData] = useState([]);

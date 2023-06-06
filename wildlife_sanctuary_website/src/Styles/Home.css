@@ -2,7 +2,7 @@
 
 .banner-container {
     background-color: rgba(0, 0, 0, 0.6);
-    background-image: url('tigerhome.jpg');
+    background-image: url('../images/tigerhome.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Button, ListGroup } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import axios from "axios";
 import ViewTicket from './ViewTicket';
-import './Home.css';
-import {Link} from "react-router-dom";
+import '../Styles/Home.css';
+
 import { Segment } from 'semantic-ui-react';
 
 

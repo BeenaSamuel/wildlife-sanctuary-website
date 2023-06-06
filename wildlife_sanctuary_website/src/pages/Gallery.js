@@ -1,7 +1,6 @@
 import React from 'react';
 import panda from '../images/panda.jpg';
 import hippo from '../images/hippo.jpeg';
-import FieldSet from '../components/Fieldset';
 
 
 const Gallery = () => {
