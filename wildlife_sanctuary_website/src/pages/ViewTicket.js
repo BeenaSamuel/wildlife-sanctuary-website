@@ -7,7 +7,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import '../Styles/Home.css';
 import { Segment } from 'semantic-ui-react';
-import { EditView } from './EditTicket';
+import EditView from './EditView';
 
 
 function ViewTicket(props) {
@@ -15,7 +15,7 @@ function ViewTicket(props) {
   const [ticketData, setTicketData] = useState([]);
   const [touristData, setTouristData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
-  const [globalFilterValue, setGlobalFilterValue] = useState(''); // Add globalFilterValue state
+  const [globalFilterValue, setGlobalFilterValue] = useState(''); 
   const [editData, setEditData] = useState(null);
 
   useEffect(() => {
@@ -115,8 +115,14 @@ function ViewTicket(props) {
   };
 
   const handleEditSubmit = async (editedData) => {
+    const touristId = props.touristid;
+    const type = editedData.type;
+    const id  = editedData.id;
+    const ride = editedData.ride;
+    const fordate = editedData.fordate;
+    
     try {
-      await axios.put(`http://localhost:8082/api/tickets/${editedData.id}`, editedData);
+      await axios.put(`http://localhost:8082/api/tickets/${editedData.id}`, {id,type ,ride , fordate ,touristId});
       setEditData(null); // Clear the editData state
       loadDetails();
     } catch (error) {
@@ -139,7 +145,7 @@ function ViewTicket(props) {
   }
   return (
    
-    <div className="ticketview">
+    <div className='text-center'>
       <Segment inverted>       
       <div  className="p-card p-p-3">
       <br></br>

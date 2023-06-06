@@ -126,7 +126,21 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public Ticket updateTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
-		return ticketRepository.save(ticket);
+	    // Retrieve the existing ticket from the database using its ID
+	    Ticket existingTicket = ticketRepository.findById(ticket.getId()).orElse(null);
+
+	    if (existingTicket != null) {
+	        // Update the properties of the existing ticket with the new values
+	        existingTicket.setType(ticket.getType());
+	        existingTicket.setRide(ticket.getRide());
+	        existingTicket.setFordate(ticket.getFordate());
+	        existingTicket.setTouristId(ticket.getTouristId());
+
+	        // Save the updated ticket back to the database
+	        return ticketRepository.save(existingTicket);
+	    }
+
+	    return null; // or throw an exception if necessary
 	}
+
 }

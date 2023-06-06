@@ -1,0 +1,8 @@
+.signout{
+    display: flex;
+    justify-content: center;
+}
+.signout:has(.whywe){
+    display: block ;
+     
+ }

@@ -54,7 +54,7 @@ class Donate extends Component {
     return (
       
      
-         <Segment inverted className='donate'>
+         <Segment inverted className='donate text-center'>
             <Form  inverted onSubmit={this.handleSubmit} >
             <h2 className='mx-auto'>Donate</h2>
               <Grid columns={3} stackable>

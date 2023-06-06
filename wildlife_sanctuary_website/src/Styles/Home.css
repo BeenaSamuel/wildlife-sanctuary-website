@@ -23,13 +23,16 @@
 
   .banner-container:has(.whywe){
     align-items: inherit ;
+    display: contents;
     
 }
 
 .banner-container:has(.donor){
     display: inherit ;
 }
-
+.banner-container:has(.ticket){
+    flex-direction: "column";
+}
 .banner-container:has(.donate){
     display: grid ;
 }

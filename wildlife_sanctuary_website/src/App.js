@@ -5,12 +5,14 @@ import Register from "./pages/Register";
 import Whywe from "./pages/Whywe";
 import Donate from "./pages/Donate";
 import Instructions from "./pages/Instructions";
-import { EditView } from "./pages/EditTicket";
+import EditView from "./pages/EditView";
 import Tourism from "./pages/Tourism";
 import Gallery from "./pages/Gallery";
 import ViewDonors from "./pages/View Donors";
 import HomepageLayout from "./pages/Homepage";
 import { Route, Routes } from "react-router-dom"
+import "./App.css"
+
 
 
 import React, { useState } from 'react';
@@ -40,7 +42,7 @@ function App() {
 
  
   return (
-    <div >
+    <div className = "mx-auto" >
        <Navbar isSignedIn={isSignedIn} />
      
       <div className="mx-auto banner-container">
@@ -56,10 +58,8 @@ function App() {
           <Route path="/Homepage" element={<HomepageLayout />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/View Donors" element={<ViewDonors />} />
-          <Route
-  path="/edit-ticket/:touristid/:ticketid/:type/:ride/:date"
-  element={<EditView />}
-/>
+          <Route path="/EditView" element={<EditView />} />
+      
 
           
           <Route path="/Login" element={<Login onSignIn={handleSignIn} />} />
@@ -68,10 +68,11 @@ function App() {
         
         
         {isSignedIn ? (
-          <div>
+          
+          <div style= {{display:" flex" ,justifyContent : "center" }} className="m-3">
           <br></br>
           
-          <Button variant="success" type="submit" onClick={() => setIsSignedIn(false)} >
+          <Button  variant="success" type="submit" onClick={() => setIsSignedIn(false)} >
             Sign out
           </Button>
           </div>
@@ -81,7 +82,7 @@ function App() {
       
       </div>
       
-
+    
       
     </div>
   )

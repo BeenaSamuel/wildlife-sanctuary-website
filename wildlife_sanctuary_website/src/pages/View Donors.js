@@ -75,6 +75,7 @@ function ViewDonors() {
         <Column field="donationtype" header="Type" filter  />
         <Column field="donationamount" header="Amount" filter  />
       </DataTable>
+      <br></br>
     </div>
     
   );
