@@ -20,7 +20,7 @@ const HomepageLayout = (props) => {
                 </div>
             </div>
            
-            <footer className="footer">
+            <footer className="footer mx-auto">
           <div className="footer-content">
             <div className="footer-about mx-auto">
             <br></br>

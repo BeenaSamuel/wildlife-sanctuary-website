@@ -43,22 +43,6 @@
 
 
 
-@media (min-width: 992px){
-.container, .container-lg, .container-md, .container-sm {
-    max-width: 1550px !important ;
-}
-}
-
-
-
-.mr-auto, .mx-auto {
-     margin-right: inherit !important ;
-}
-
-.ml-auto, .mx-auto {
-     margin-left: inherit !important ;
-}
-
 h1{
     color: antiquewhite;
 }

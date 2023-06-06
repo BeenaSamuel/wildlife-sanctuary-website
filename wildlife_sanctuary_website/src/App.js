@@ -43,7 +43,7 @@ function App() {
     <div >
        <Navbar isSignedIn={isSignedIn} />
      
-      <div className="container mx-auto banner-container">
+      <div className="mx-auto banner-container">
         <Routes>
         
           <Route path="/" element={<HomepageLayout />} />
