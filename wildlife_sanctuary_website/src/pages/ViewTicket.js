@@ -140,6 +140,7 @@ function ViewTicket(props) {
         editData={editData}
         handleEditSubmit={handleEditSubmit}
         handleCancel={() => setEditData(null)}
+        
       />
     );
   }

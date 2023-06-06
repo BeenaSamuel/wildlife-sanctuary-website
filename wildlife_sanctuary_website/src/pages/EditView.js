@@ -5,7 +5,7 @@ import '../Styles/Home.css';
 
 export default function EditView({ editData, handleEditSubmit, handleCancel }) {
     const [type, setType] = useState(editData?.type || '');
-    const [ride, setRide] = useState(editData?.ride || '');
+    const [ride, setRide] = useState('No ride');
     const [fordate, setFordate] = useState(editData?.fordate || '');
     const [ridecheck, setRideCheck] = useState(false);
     const rides = [
@@ -19,8 +19,9 @@ export default function EditView({ editData, handleEditSubmit, handleCancel }) {
     };
   
     return (
-      <div className="edit-view  text-center  w-25 ticket">
+      <div className="edit-view  text-center  w-25 ticketedit">
         <Segment inverted>
+          <h1>Edit ticket details</h1>
                 <Form inverted>
                 <Form.Group controlId="type">
         <Form.Label>Ticket Type:</Form.Label>

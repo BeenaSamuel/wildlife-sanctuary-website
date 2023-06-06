@@ -30,8 +30,8 @@
 .banner-container:has(.donor){
     display: inherit ;
 }
-.banner-container:has(.ticket){
-    flex-direction: "column";
+.banner-container:has(.ticketedit){
+    flex-direction: column;
 }
 .banner-container:has(.donate){
     display: grid ;
