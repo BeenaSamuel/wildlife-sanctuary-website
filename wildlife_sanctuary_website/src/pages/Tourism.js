@@ -30,7 +30,7 @@ const Tourism = (props) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const tickno = parseInt(ticketnos);
-    if (ticketnos <= 10){
+   
     try {
       for (let i = 0; i < tickno; i++) {
         await axios.post("http://localhost:8082/api/tickets", { type, ride,fordate, touristId });
@@ -41,9 +41,7 @@ const Tourism = (props) => {
     } catch (error) {
       console.log('Error in posting');
     }
-  }else {
-    alert ('Only maximum of 10 tickets allowed ');
-  }
+  
   
   };
   
