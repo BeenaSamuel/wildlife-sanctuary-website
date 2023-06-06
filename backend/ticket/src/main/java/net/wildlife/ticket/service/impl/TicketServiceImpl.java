@@ -32,16 +32,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	
-  
 
-//    private TicketDto mapToTicket(Ticket ticket){
-//        TicketDto ticketDto = new TicketDto();
-//        ticketDto.setId(ticket.getId());
-//        ticketDto.setType(ticket.getType());
-//        ticketDto.setRide(ticket.getRide());
-// 
-//        return ticketDto;
-//    }
     
     private List<TicketDto> mapTicketsFromTourist(Long touristId) {
         List<Ticket> tickets = ticketRepository.findAllByTouristId(touristId);
@@ -68,26 +59,6 @@ public class TicketServiceImpl implements TicketService {
 
 
 
-
-//	@Override
-//	public ResponseDto getTicket(Long ticketId) {
-//		 ResponseDto responseDto = new ResponseDto();
-//	        Ticket ticket = ticketRepository.findById(ticketId).get();
-//	        TicketDto ticketDto = mapToTicket(ticket);
-//
-//	        ResponseEntity<TouristDto> responseEntity = restTemplate
-//	                .getForEntity("http://localhost:8081/api/tourists/" + ticket.getTouristId(),
-//	                TouristDto.class);
-//
-//	        TouristDto touristDto = responseEntity.getBody();
-//
-//	        
-//
-//	        responseDto.setTickets(ticketDto);
-//	        responseDto.setTourist(touristDto);
-//
-//	        return responseDto;
-//	}
 
 
 
@@ -116,7 +87,7 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public void deleteTicket(Long ticketId) {
-		// TODO Auto-generated method stub
+
 		ticketRepository.deleteById(ticketId);
 		
 	}

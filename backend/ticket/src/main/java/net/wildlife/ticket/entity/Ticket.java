@@ -78,7 +78,6 @@ public class Ticket {
 	}
 
 	public TicketDto get() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

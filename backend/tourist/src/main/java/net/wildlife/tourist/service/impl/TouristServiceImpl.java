@@ -1,14 +1,17 @@
 package net.wildlife.tourist.service.impl;
+import java.util.Optional;
+
 
 
 
 import lombok.extern.slf4j.Slf4j;
 import net.wildlife.tourist.entity.Tourist;
-import net.wildlife.tourist.entity.Tourist;
+
 import net.wildlife.tourist.repository.TouristRepository;
 import net.wildlife.tourist.service.TouristService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.annotation.Resource;
 
@@ -37,20 +40,24 @@ public class TouristServiceImpl implements TouristService {
         return touristRepository.save(tourist);
     }
 
-    @Transactional
-    @Override
-    public Tourist getTouristById(Long touristId) {
-        return touristRepository.findById(touristId).get();
-    }
-    
-    @Override
-	public List<Tourist> getAllTourists() {
-		
-		List<Tourist> tourists = touristRepository.findAll();
-		
-		return tourists;
+	@Transactional
+	@Override
+	public Tourist getTouristById(Long touristId) {
+	    Optional<Tourist> optionalTourist = touristRepository.findById(touristId);
+	    if (optionalTourist.isPresent()) {
+	        return optionalTourist.get();
+	    } else {
+	        // Handle the case when the Tourist with the given ID does not exist
+	        throw new NoSuchElementException("Tourist not found with ID: " + touristId);
+	    }
 	}
+
     
+	@Override
+	public List<Tourist> getAllTourists() {
+	    return touristRepository.findAll();
+	}
+
     @Override
     public Tourist getTouristByNameAndPassword(String name, String password) {
         return touristRepository.findByNameAndPassword(name, password);

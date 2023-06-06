@@ -28,12 +28,7 @@ public class TicketController {
         return new ResponseEntity<>(savedTicket, HttpStatus.CREATED);
     }
 
-//    @GetMapping("{id}")
-//    public ResponseEntity<ResponseDto> getTicket(@PathVariable("id") Long ticketId){
-//        ResponseDto responseDto = ticketService.getTicket(ticketId);
-//        return ResponseEntity.ok(responseDto);
-//    }
-	
+
     @PutMapping("{id}")
     public ResponseEntity<Ticket> updateTicket( @RequestBody Ticket ticket){
         Ticket updatedTicket = ticketService.updateTicket(ticket);

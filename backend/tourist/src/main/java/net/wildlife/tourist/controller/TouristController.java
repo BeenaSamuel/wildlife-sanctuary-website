@@ -3,7 +3,7 @@ package net.wildlife.tourist.controller;
 
 
 import net.wildlife.tourist.entity.Tourist;
-import net.wildlife.tourist.entity.Tourist;
+
 import net.wildlife.tourist.service.TouristService;
 
 import java.util.Collections;
@@ -39,12 +39,7 @@ public class TouristController {
         Tourist tourist = touristService.getTouristById(touristId);
         return ResponseEntity.ok(tourist);
     }
-    
-//    @GetMapping
-//    public ResponseEntity<List<Tourist>> getAllTourists(){
-//    	List<Tourist> tourist = touristService.getAllTourists();
-//        return ResponseEntity.ok(tourist);
-//    }
+
     
     //Login
     @GetMapping

@@ -9,6 +9,8 @@ import net.wildlife.donation.service.DonationService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import javax.annotation.Resource;
 
@@ -36,18 +38,20 @@ public class DonationServiceImpl implements DonationService {
         return donationRepository.save(donation);
     }
 
-    @Transactional
-    @Override
-    public Donation getDonationById(Long donationId) {
-        return donationRepository.findById(donationId).get();
-    }
-    
+	@Transactional
+	@Override
+	public Donation getDonationById(Long donationId) {
+	    Optional<Donation> donationOptional = donationRepository.findById(donationId);
+	    if (donationOptional.isPresent()) {
+	        return donationOptional.get();
+	    }
+	    throw new NoSuchElementException("Donation not found with ID: " + donationId);
+	}
+
     
     @Override
 	public List<Donation> getAllDonations() {
-		
-		List<Donation> donations = donationRepository.findAll();
 	
-		return donations;
+		return  donationRepository.findAll();
 	}
 }
