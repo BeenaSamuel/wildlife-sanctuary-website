@@ -8,7 +8,8 @@ import React, { useEffect, useState } from "react";
 import '../Styles/Home.css';
 import { Segment } from 'semantic-ui-react';
 import EditView from './EditView';
-
+import { Toast } from 'primereact/toast';
+import { useRef } from 'react';
 
 function ViewTicket(props) {
   
@@ -17,6 +18,7 @@ function ViewTicket(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [globalFilterValue, setGlobalFilterValue] = useState(''); 
   const [editData, setEditData] = useState(null);
+  const toast = useRef(null);
 
   useEffect(() => {
     loadDetails();
@@ -41,7 +43,9 @@ function ViewTicket(props) {
       console.error("Error:", error);
     }
   };
-
+  const showError = () => {
+    toast.current.show({severity:'error', summary: 'Deleted', detail:'Deleted ticket', life: 3000});
+}
   const calculateTotalPrice = (tickets) => {
     let totalPrice = 0;
 
@@ -235,12 +239,18 @@ function ViewTicket(props) {
                   className="p-button-rounded p-button-info action-button"
                   onClick={() => handleEdit(rowData)}
                 />
+               
       <Tooltip target=".delete-button" content="Delete" position="top" />
       <Button
         icon="pi pi-trash"
         className="p-button-rounded p-button-danger action-button delete-button"
-        onClick={() => handleDelete(rowData.id)}
+        onClick={() => {
+          handleDelete(rowData.id);
+          showError();
+        }}
+        
       />
+      <Toast ref={toast} /> 
     </div>
   )}
   style={{ textAlign: 'center', width: '10em' }}

@@ -3,6 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 import axios from "axios";
 import ViewTicket from './ViewTicket';
 import '../Styles/Home.css';
+import { Slider } from "primereact/slider";
+import { InputText } from "primereact/inputtext";
 
 import { Segment } from 'semantic-ui-react';
 
@@ -15,7 +17,7 @@ const Tourism = (props) => {
 
   const [type, setType] = useState('');
   const [ride, setRide] = useState('No ride');
-  const [ticketnos, setTicketnos] = useState('No ride');
+  const [ticketnos, setTicketnos] = useState('1');
  
   const [ticketview , setTicketview] = useState(false);
   const [ridecheck, setRideCheck] = useState(false);
@@ -28,7 +30,7 @@ const Tourism = (props) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const tickno = parseInt(ticketnos);
-    
+    if (ticketnos <= 10){
     try {
       for (let i = 0; i < tickno; i++) {
         await axios.post("http://localhost:8082/api/tickets", { type, ride,fordate, touristId });
@@ -39,6 +41,10 @@ const Tourism = (props) => {
     } catch (error) {
       console.log('Error in posting');
     }
+  }else {
+    alert ('Only maximum of 10 tickets allowed ');
+  }
+  
   };
   
   if (ticketview){
@@ -65,12 +71,10 @@ const Tourism = (props) => {
       <br></br>
       <Form.Group controlId="ticketnos">
         <Form.Label>Number of tickets:</Form.Label>
-        <Form.Control
-          type="number"
-          value={ticketnos}
-          onChange={(e) => setTicketnos(e.target.value)}
-         
-        />
+         <br></br>
+        <InputText placeholder='select no of tickets' value={ticketnos} onChange={(e) => setTicketnos(e.target.value)} className="w-full my-2" />
+
+        <Slider value={ticketnos} onChange={(e) => setTicketnos(e.value)} className="w-14rem" max={10}/>
       </Form.Group>
       <br></br>
       <Form.Group controlId="type">
