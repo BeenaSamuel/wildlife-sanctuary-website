@@ -63,7 +63,7 @@ function ViewDonors() {
       <DataTable
         value={filteredData} // Display the filtered data in the DataTable
         paginator
-        rows={10}
+        rows={5}
         dataKey="id"
         globalFilter={globalFilterValue}
         header={header}
