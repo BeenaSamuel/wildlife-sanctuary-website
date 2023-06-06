@@ -4,9 +4,9 @@ import { Segment } from 'semantic-ui-react';
 import { Form ,Button} from 'react-bootstrap';
 
 export function EditView({ editData, handleEditSubmit, handleCancel }) {
-    const [type, setType] = useState(editData.type);
-    const [ride, setRide] = useState(editData.ride);
-    const [fordate, setFordate] = useState(editData.fordate);
+    const [type, setType] = useState(editData?.type || '');
+    const [ride, setRide] = useState(editData?.ride || '');
+    const [fordate, setFordate] = useState(editData?.fordate || '');
   
     const handleSubmit = () => {
       const editedData = { ...editData, type, ride, fordate };
