@@ -12,7 +12,7 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      error: '',
+      
       redirectToOtherPage: false,
       touristId : '',
       success:''
@@ -30,7 +30,7 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
-    // const { history } = useNavigate();
+
     
 
     
@@ -46,15 +46,12 @@ class Login extends Component {
           const touristId = data[0].id; 
           this.setState({ touristId, redirectToOtherPage: true });
           localStorage.setItem('touristId', touristId);
-          
-          // history.push('/Tourism');
-          // this.setState({ success: 'Sign in success' });
-          // this.setState({ error: '' });
-   
+
           
         } else {
           console.log('User does not exist!');
-          this.setState({ error: 'Invalid username or password' });
+          alert('User does not exist!');
+          
         }
         
       })
@@ -65,10 +62,7 @@ class Login extends Component {
       });
   };
 
-  handleSignOut = () => {
-    // Set the isSignedIn state to false in the parent component
-    this.props.onSignOut();
-  };
+
   updateTouristId = (id) => {
     this.setState({ touristId: id });
   };

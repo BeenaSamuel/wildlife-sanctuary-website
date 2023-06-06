@@ -77,8 +77,8 @@ const Gallery = () => {
 
   return (
     <div className = 'gallery' style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-      {animals.map((animal, index) => (
-        <div key={index} style={{ width: '30%', marginBottom: '30px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
+      {animals.map((animal) => (
+        <div key={animal.name} style={{ width: '30%', marginBottom: '30px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
           <br></br> <br></br><h2 style={{ textAlign: 'center', padding: '10px 0' }}>{animal.name}</h2>
           <img src={animal.imageSrc} alt={animal.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
           <p style={{ margin: '10px', lineHeight: '1.5' }}>{animal.description}</p>

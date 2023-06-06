@@ -3,8 +3,6 @@ import { Container, Button, Form, Segment, Grid, Dropdown } from 'semantic-ui-re
 import axios from "axios";
 import '../Styles/Register.css'
 
-
-
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -50,10 +48,6 @@ class Register extends Component {
     this.setState({ name: e.target.value });
   };
 
-  handlePlaceChange = (e) => {
-    this.setState({ place: e.target.value });
-  };
-
   handleContactChange = (e) => {
     this.setState({ contact: e.target.value });
   };
@@ -69,7 +63,13 @@ class Register extends Component {
   handleConfirmpasswordChange = (e) => {
     const { password } = this.state;
     const confirmpassword = e.target.value;
-    const passwordState = password === confirmpassword ? 'match' : 'mismatch';
+    let passwordState = 'normal';
+
+    if (password === confirmpassword) {
+      passwordState = 'match';
+    } else if (password !== '' && confirmpassword !== '') {
+      passwordState = 'mismatch';
+    }
 
     this.setState({ confirmpassword, passwordState });
   };
@@ -86,14 +86,22 @@ class Register extends Component {
       { key: 'french', value: 'french', text: 'French' },
       { key: 'Hindi', value: 'Hindi', text: 'Hindi' },
     ];
+
+    let passwordClassName = 'password-normal';
+
+    if (passwordState === 'match') {
+      passwordClassName = 'password-match';
+    } else if (passwordState === 'mismatch') {
+      passwordClassName = 'password-mismatch';
+    }
+
     return (
       <Container className=" justify-content-center align-items-start w-50 mx-auto register ">
         <div className="register-form">
-         <br></br>
-          
+          <br />
           <Segment inverted>
-            <Form  inverted onSubmit={this.handleSubmit}>
-            <h2 className='mx-auto'>Register</h2>
+            <Form inverted onSubmit={this.handleSubmit}>
+              <h2 className='mx-auto'>Register</h2>
               <Grid columns={2} stackable>
                 <Grid.Row className='mx-auto'>
                   <Grid.Column width={16}>
@@ -117,17 +125,11 @@ class Register extends Component {
                         type="password"
                         value={confirmpassword}
                         onChange={this.handleConfirmpasswordChange}
-                        className={
-                          passwordState === 'match'
-                            ? 'password-match'
-                            : passwordState === 'mismatch'
-                            ? 'password-mismatch'
-                            : 'password-normal'
-                        }
+                        className={passwordClassName}
                       />
                     </Form.Field>
                   </Grid.Column>
-                </Grid.Row >
+                </Grid.Row>
                 <Grid.Row className='mx-auto'>
                   <Grid.Column width={8}>
                     <Form.Field>
@@ -158,8 +160,8 @@ class Register extends Component {
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               <Button primary type="submit" className='mx-auto'>
                 Register
               </Button>
