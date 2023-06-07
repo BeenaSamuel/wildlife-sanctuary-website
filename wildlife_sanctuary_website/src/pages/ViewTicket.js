@@ -77,7 +77,6 @@ function ViewTicket(props) {
         (item) =>
           (item.id && typeof item.id === 'string' && item.id.toLowerCase().includes(value.toLowerCase())) ||
           item.type.toLowerCase().includes(value.toLowerCase()) ||
-          item.fordate.toLowerCase().includes(value.toLowerCase()) ||
           item.ride.toLowerCase().includes(value.toLowerCase())
       );
   
@@ -247,6 +246,7 @@ function ViewTicket(props) {
         onClick={() => {
           handleDelete(rowData.id);
           showError();
+
         }}
         
       />
